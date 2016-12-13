@@ -1,0 +1,72 @@
+<script src="/webjars/angularjs/1.4.9/angular.js"></script>
+<script src="/webjars/angularjs/1.4.9/angular-resource.js"></script>
+<script src="/webjars/angularjs/1.4.9/angular-route.js"></script>
+
+<link rel="stylesheet" href="/webjars/bootstrap/3.3.6/css/bootstrap.css">
+
+//*[@id="sortable-results"]/ul/li[19]/p/a
+
+//*[@id="sortable-results"]
+//*[@id="sortable-results"]/ul
+//*[@id="sortable-results"]/ul/li[1]
+
+<li class="result-row" data-pid="5884370505" data-repost-of="5489516612">
+
+        <a href="/wch/mod/5884370505.html" class="result-image gallery" data-ids="0:00r0r_d4kuc54sdGC,1:01515_2GK1Q7rKudY,1:01313_qUo6MwjjPy">
+                <span class="result-price">$495</span>
+        <div class="swipe" style="visibility: visible;"><div class="swipe-wrap" style="width: 900px;"><div data-index="0" style="width: 300px; left: 0px; transition-duration: 0ms; transform: translate(0px, 0px);"><img alt="" class="" src="https://images.craigslist.org/00r0r_d4kuc54sdGC_300x300.jpg"></div><div data-index="1" style="width: 300px; left: -300px; transition-duration: 0ms; transform: translate(300px, 0px);"></div><div data-index="2" style="width: 300px; left: -600px; transition-duration: 0ms; transform: translate(-300px, 0px);"></div></div></div><div class="slider-info">image 1 of 3</div><div class="slider-back arrow">&lt;</div><div class="slider-forward arrow">&gt;</div></a>
+
+    <p class="result-info">
+        <span class="icon icon-star" role="button" title="save this post in your favorites list">
+            <span class="screen-reader-text">favorite this post</span>
+        </span>
+
+            <time class="result-date" datetime="2016-11-30 12:16" title="Wed 30 Nov 12:16:07 PM">Nov 30</time>
+
+
+        <a href="/wch/mod/5884370505.html" data-id="5884370505" class="result-title hdrlnk">LIKE NEW UNLOCKED IPHONE 6s PLUS w/APPLE Warranty</a>
+
+
+        <span class="result-meta">
+                <span class="result-price">$495</span>
+
+
+                <span class="result-hood"> (Whiteplains)</span>
+
+                <span class="result-tags">
+                    pic
+                    <span class="maptag" data-pid="5884370505">map</span>
+                </span>
+
+                <span class="banish icon icon-trash" role="button">
+                    <span class="screen-reader-text">hide this posting</span>
+                </span>
+
+            <span class="unbanish icon icon-trash red" role="button" aria-hidden="true"></span>
+            <a href="#" class="restore-link">
+                <span class="restore-narrow-text">restore</span>
+                <span class="restore-wide-text">restore this posting</span>
+            </a>
+
+        </span>
+    </p>
+</li>
+
+//*[@id="sortable-results"]/ul/li[1]/p/a
+
+//*[@id="sortable-results"]/ul/li[1]/a/span
+//*[@id="sortable-results"]/ul/li[1]/p/a
+
+item gets you here //*[@id="sortable-results"]/ul/li[1]
+then  .//p/a
+
+
+
+//*[@id="sortable-results"]/ul/li[1]/a/span -price
+
+go to next page //*[@id="searchform"]/div[5]/div[3]/span[2]/a[3]
+
+
+
+
+
