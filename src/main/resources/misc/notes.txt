@@ -66,7 +66,24 @@ then  .//p/a
 
 go to next page //*[@id="searchform"]/div[5]/div[3]/span[2]/a[3]
 
+original service 
 
+/*@GET
+	@Path("/initiateCrawler/{query}/{pages}")
+	public void initiateCrawler(@PathParam("query") String query, @PathParam("pages") String pages){
+		
+		
+		// Crawler crawler = crawlerServiceFactory.retrieveCrawler(typeOfCrawler);
+		// crawler.execute
+		
+		System.out.println("GET Called");
+		try{
+			crawlerClass.run(query);
+			for (int i = 1; i < Integer.valueOf(pages); i++){
+				crawlerClass.run(query, String.valueOf(i));
+			}
+				}catch(Exception e){e.printStackTrace();}
+	}*/
 
 
 
