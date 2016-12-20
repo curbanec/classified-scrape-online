@@ -29,16 +29,15 @@ public class CraigsListCrawler implements Crawler{
 		try {
 			runPrimary(customSearchQuery, pagesToQuery);
 			if (enoughPages){
-				
-				
+				status = Response.status(200).build();
 				
 				for (int i = 1; i < Integer.valueOf(pagesToQuery); i++){
 					run(customSearchQuery, String.valueOf(i));
 				}
+			}else {
+				status = Response.status(500).build();
+				
 			}
-			
-			// set response error
-					
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -128,10 +127,6 @@ public class CraigsListCrawler implements Crawler{
 	
 	public Response getStatus() {
 		return status;
-	}
-
-	public void setStatus(Response resp) {
-		this.status = resp;
 	}
 }
 
