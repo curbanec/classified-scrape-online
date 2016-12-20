@@ -1,7 +1,9 @@
 package com.rest;
 
+import javax.ws.rs.core.Response;
+
 public interface MainService {
 	
-	public void initiateCrawler(String query, String pages);
+	public Response initiateCrawler(String query, String pages);
 
 }

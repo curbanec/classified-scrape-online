@@ -5,6 +5,8 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Response;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.crawler.Crawler;
@@ -19,9 +21,11 @@ public class MainServiceImpl implements MainService{
 	
 	@GET
 	@Path("/initiateCrawler/{query}/{pages}")
-	public void initiateCrawler(@PathParam("query") String query, @PathParam("pages") String pages){
+	public Response initiateCrawler(@PathParam("query") String query, @PathParam("pages") String pages){
 		
 		Crawler crawler = crawlerServiceFactory.retrieveCrawler("craigsList");
 		crawler.execute(query, pages);
+		
+		return Response.ok().build();
 	}
 }

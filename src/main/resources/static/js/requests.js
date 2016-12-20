@@ -6,9 +6,10 @@ function initiateCrawler(){
 				}
 
 function sendCrawlerQuery() {
-	$('#crawlerForm').submit(function(){
+	$('#crawlerForm').submit(function(event){
 		var query = $('#query').val();
 		var pages = $('#pages').val();			
+		event.preventDefault();
 		$.ajax({
 				url:"/api/main/initiateCrawler/" + query + "/" + pages, 
 				type:'GET'

@@ -4,6 +4,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URLEncoder;
 import java.util.List;
+
+import javax.ws.rs.core.Response;
+
 import org.springframework.stereotype.Component;
 
 import com.gargoylesoftware.htmlunit.BrowserVersion;
@@ -20,14 +23,21 @@ public class CraigsListCrawler implements Crawler{
 	
 	boolean enoughPages;
 	
+	Response status;
+
 	public void execute(String customSearchQuery, String pagesToQuery){
 		try {
 			runPrimary(customSearchQuery, pagesToQuery);
 			if (enoughPages){
+				
+				
+				
 				for (int i = 1; i < Integer.valueOf(pagesToQuery); i++){
 					run(customSearchQuery, String.valueOf(i));
 				}
 			}
+			
+			// set response error
 					
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -49,7 +59,7 @@ public class CraigsListCrawler implements Crawler{
 		  List<HtmlListItem> sortableResultsUnorderedList = (List<HtmlListItem>) page.getByXPath("//*[@id='sortable-results']/ul/li");
 		  if(sortableResultsUnorderedList.isEmpty()){  
 		  		System.out.println("No items found !");
-		  	}else{
+		  	}else if(enoughPages){
 		  		for(HtmlListItem item : sortableResultsUnorderedList){
 		  			
 		  			HtmlAnchor description = (HtmlAnchor)item.getFirstByXPath(".//p/a");
@@ -114,6 +124,14 @@ public class CraigsListCrawler implements Crawler{
 	    	  return true;
 	    }
 		return false;  	  
+	}
+	
+	public Response getStatus() {
+		return status;
+	}
+
+	public void setStatus(Response resp) {
+		this.status = resp;
 	}
 }
 
