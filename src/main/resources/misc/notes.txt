@@ -1,3 +1,28 @@
+
+http://localhost:8080/api/main/initiateStateCrawler
+
+{
+	"pages": "2",
+	"searchQuery": "car", 
+    "regions": ["auburn","bham","dothan","shoals","gadsden","huntsville","mobile","montgomery","tuscaloosa"]
+}
+
+"Alabama": ["auburn","bham","dothan","shoals","gadsden","huntsville","mobile","montgomery","tuscaloosa"],
+
+"birmingham"
+
+
+	$('#pages').attr("disabled", "disabled");
+
+
+
+
+
+
+
+
+
+
 <script src="/webjars/angularjs/1.4.9/angular.js"></script>
 <script src="/webjars/angularjs/1.4.9/angular-resource.js"></script>
 <script src="/webjars/angularjs/1.4.9/angular-route.js"></script>
@@ -84,6 +109,89 @@ original service
 			}
 				}catch(Exception e){e.printStackTrace();}
 	}*/
+
+https://newyork.craigslist.org/search/sss?sort=rel&query=car
+https://losangeles.craigslist.org/search/sss?sort=rel&query=car
+https://losangeles.craigslist.org/search/sfv/sss?sort=rel&query=car
+
+******* I need a URL Builder Service *******
+
+
+
+
+function Test() {
+	$('#crawlerForm').off('submit').submit(function(event){
+		
+		var json = {"a":"a", "b":"b"};
+		var valid = JSON.stringify(json);
+		
+		function IsJsonString(json) {try {JSON.parse(json);} catch (e) {return false; } return true;}
+		console.log(IsJsonString(valid))
+		event.preventDefault();
+		$.ajax({
+				type:'POST',
+				url:"/api/main/testing", 
+				headers: { 'Content-Type': 'application/json' },
+				dataType:'json',  
+				mimeType:'json', 
+				contentType:'application/json',
+				data:valid,
+				statusCode: {
+					500: function(){alert("not enough pages exist for your search query");}, 
+					200: function(){console.log("search worked \"correctly\"");}
+				}
+			}); 
+		});
+	}
+
+function initiateCrawler(){
+			 $.ajax({
+					url:"/api/main/initiateCrawler",
+					type:'GET'
+					});
+				}
+
+function sendCrawlerQuery() {
+	$('#crawlerForm').off('submit').submit(function(event){
+		var region = $('#region').val();
+		var query = $('#query').val();
+		var pages = $('#pages').val();			
+		event.preventDefault();
+		$.ajax({
+				url:"/api/main/initiateCrawler/" + region + "/" + query + "/" + pages, 
+				type:'GET', 
+				statusCode: {
+					500: function(){alert("not enough pages exist for your search query");}, 
+					200: function(){console.log("search worked \"correctly\"");}
+				}
+			}); 
+		});
+	}
+
+
+
+function sendFormAjax() {
+	$('#myid').submit(function(){
+		var name = $('#Name').val();
+		var age = $('#Age').val();
+		var json = {"age":age, "name":name};				
+		$.ajax({
+				headers: { 'Content-Type': 'application/json' },
+				url:"/api/main/createWithHibernate", 
+				type:'POST', 
+				dataType:'json', 
+				mimeType:'json', 
+				contentType:'application/json',
+				data:JSON.stringify(json)
+			}); 
+		});
+	}
+
+/*$('#state').change(function(){})*/
+
+$("#state").change(function(){
+	 console.log("drpdwn haz changed");
+	});
 
 
 

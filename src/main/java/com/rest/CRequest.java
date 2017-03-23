@@ -5,6 +5,8 @@ import java.util.List;
 public class CRequest {
 
 	String pages;
+	
+	String typeOf;
 
 	String searchQuery;
 
@@ -44,4 +46,12 @@ public class CRequest {
 		this.maxDepth = maxDepth;
 	}
 
+	public String getTypeOf() {
+		return typeOf;
+	}
+
+	public void setTypeOf(String typeOf) {
+		this.typeOf = typeOf;
+	}
+	
 }

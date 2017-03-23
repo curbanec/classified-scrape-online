@@ -1,7 +1,7 @@
 package com.crawler;
 
 import org.springframework.stereotype.Component;
-
+// TODO just default to amazon crawler for the time being 
 @Component
 public class CrawlerServiceFactory {
 	

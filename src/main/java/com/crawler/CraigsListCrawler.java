@@ -49,9 +49,13 @@ public class CraigsListCrawler implements Crawler {
 
 	public void execute(List<String> regions, String customSearchQuery, String pagesToQuery, boolean maxDepth) {
 
+		long startTime = System.nanoTime();
+		
 		for (String region : regions) {
 			execute(region, customSearchQuery, pagesToQuery, maxDepth);
 		}
+		long endTime = System.nanoTime();
+		System.out.println("Total execution time: " + (endTime-startTime) + "ms"); 
 	}
 
 	@SuppressWarnings("unchecked")
@@ -69,20 +73,19 @@ public class CraigsListCrawler implements Crawler {
 
 			enoughPages = validate(page, pagesToQuery);
 
-			List<HtmlListItem> sortableResultsUnorderedList = (List<HtmlListItem>) page
-					.getByXPath("//*[@id='sortable-results']/ul/li");
+			List<HtmlListItem> sortableResultsUnorderedList = (List<HtmlListItem>) page.getByXPath("//*[@id='sortable-results']/ul/li");
 			if (sortableResultsUnorderedList.isEmpty()) {
 				System.out.println("No items found !");
 			} else if (enoughPages) {
 				for (HtmlListItem item : sortableResultsUnorderedList) {
-
 					HtmlAnchor description = (HtmlAnchor) item.getFirstByXPath(".//p/a");
-					System.out.println(description.asText());
+					HtmlAnchor price = (HtmlAnchor) item.getFirstByXPath(".//a");
+					
+					/*System.out.println(description.asText());
+					System.out.println(price.asText());
+					*/
 					fileWriter.write(description.asText());
 					fileWriter.write(" at price: ");
-
-					HtmlAnchor price = (HtmlAnchor) item.getFirstByXPath(".//a");
-					System.out.println(price.asText());
 					fileWriter.write(price.asText());
 					fileWriter.write(System.lineSeparator());
 
@@ -111,14 +114,14 @@ public class CraigsListCrawler implements Crawler {
 				System.out.println("No items found !");
 			} else {
 				for (HtmlListItem item : sortableResultsUnorderedList) {
-
 					HtmlAnchor description = (HtmlAnchor) item.getFirstByXPath(".//p/a");
-					System.out.println(description.asText());
+					HtmlAnchor price = (HtmlAnchor) item.getFirstByXPath(".//a");
+					
+					/*System.out.println(description.asText());
+					System.out.println(price.asText());
+					*/
 					fileWriter.write(description.asText());
 					fileWriter.write(" at price: ");
-
-					HtmlAnchor price = (HtmlAnchor) item.getFirstByXPath(".//a");
-					System.out.println(price.asText());
 					fileWriter.write(price.asText());
 					fileWriter.write(System.lineSeparator());
 				}

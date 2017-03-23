@@ -90,13 +90,48 @@
 
 				<br> <br> Search Query<br> <input id="query"
 					type="text"><br> <br> Number of Pages<br> <input
-					id="pages" type="text"><br>
-				<br> <input id="maxDepth" type="checkbox" name="depth">
-				Max Search Depth<br> <br> <input type="submit"
-					value="Initiate Crawler" onclick="sendStateCrawlerQuery()"><br>
+					id="pages" type="text"><br> <br> <input
+					id="maxDepth" type="checkbox" name="depth"> Max Search
+				Depth<br> <br> <input type="submit"
+					value="Initiate Craigslist Crawler"
+					onclick="sendStateCrawlerQuery()"><br>
 
 			</form>
 		</div>
+	
+		<div class="alertForm">
+
+			<form id="alertForm">
+			<br>
+
+				<!-- select, label, and input are in-line elements  -->
+
+				<div class="NULL">
+					<label for="ChicagoRegion">ChicagoRegion</label>
+					<br> <br>
+					<select id="ChicagoRegion">
+						<option>chc</option>
+						<option>nch</option>
+						<option>wcl</option>
+						<option>sox</option>
+						<option>nwi</option>
+						<option>nwc</option>
+					</select>
+
+				</div>
+
+				<br>
+				 <input id="query1" type="text">
+				 <br> 	
+				 <br> 
+				 <br> 
+				 <input type="submit" value="Ok" onclick="activateAlert()">
+				 <br>
+
+			</form>
+
+		</div>
+
 	</div>
 	<script src="js/pageActions.js"></script>
 </body>

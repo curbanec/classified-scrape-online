@@ -10,3 +10,8 @@
 .makeMeInline {
 	display: inline-block;
 }
+
+.amazonForm {
+	margin-top: 10px;
+	background-color: #ffd7b5;
+}

@@ -2,7 +2,7 @@
 // Access with stateObject.property
 
 var stateObject = {
-"Alabama": ["auburn"],
+"Alabama": ["auburn","bham","dothan","shoals","gadsden","huntsville","mobile","montgomery","tuscaloosa"],
 "Alaska": [],
 "Arizona": [],
 "Arkansas": [],
