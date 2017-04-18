@@ -1,5 +1,6 @@
 package com.rest;
 
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
@@ -63,9 +64,12 @@ public class MainServiceImpl implements MainService {
 		ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 		final Runnable svc = new Runnable(){public void run() { ThreadSafeAlert alert = new ThreadSafeAlert(); alert.runPrimary(region, query);}};
 		final ScheduledFuture<?> hmm = scheduler.scheduleAtFixedRate(svc, 10, 10, java.util.concurrent.TimeUnit.SECONDS);
+		try {
+			hmm.get();
+		} catch (Exception e) { e.printStackTrace(); } 
 		
 		return Response.status(200).build();
 		
 	}
-
+         
 }

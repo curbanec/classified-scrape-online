@@ -1,6 +1,60 @@
-// State object holds all regions for each state.
-// Access with stateObject.property
-
+var StateDropdown = {
+		"states" : [
+		            { "stateName" : ""},
+		            { "stateName" : "Alabama" },
+		            { "stateName" : "Alaska" },
+		            { "stateName" : "Arizona" },
+		            { "stateName" : "Arkansas" },
+		            { "stateName" : "California" },
+		            { "stateName" : "Colorado" },
+		            { "stateName" : "Connecticut" },
+		            { "stateName" : "District of Columbia" },
+		            { "stateName" : "Georgia" },
+		            { "stateName" : "Hawaii" },
+		            { "stateName" : "Idaho" },
+		            { "stateName" : "Illinois" },
+		            { "stateName" : "Indiana" },
+		            { "stateName" : "Iowa" },
+		            { "stateName" : "Kansas" },
+		            { "stateName" : "Kentucky" },
+		            { "stateName" : "Louisiana" },
+		            { "stateName" : "Maine" },
+		            { "stateName" : "Maryland" },
+		            { "stateName" : "Massachusetts" },
+		            { "stateName" : "Michigan" },
+		            { "stateName" : "Minnesota" },
+		            { "stateName" : "Mississippi" },
+		            { "stateName" : "Missouri" },
+		            { "stateName" : "Montana" },
+		            { "stateName" : "Nebraska" },
+		            { "stateName" : "Nevada" },
+		            { "stateName" : "New Hampshire" },
+		            { "stateName" : "New Jersey" },
+		            { "stateName" : "New Mexico" },
+		            { "stateName" : "New York" },
+		            { "stateName" : "North Carolina" },
+		            { "stateName" : "North Dakota" },
+		            { "stateName" : "Ohio" },
+		            { "stateName" : "Oklahoma" },
+		            { "stateName" : "Oregon" },
+		            { "stateName" : "Pennsylvania" },
+		            { "stateName" : "Rhode Island" },
+		            { "stateName" : "South Carolina" },
+		            { "stateName" : "South Dakota" },
+		            { "stateName" : "Tennessee" },
+		            { "stateName" : "Texas" },
+		            { "stateName" : "Utah" },
+		            { "stateName" : "Vermont" },
+		            { "stateName" : "Virginia" },
+		            { "stateName" : "Washington" },
+		            { "stateName" : "West Virginia" },
+		            { "stateName" : "Wisconsin" },
+		            { "stateName" : "Wyoming" },
+		            { "stateName" : "Territories" }		                       
+		           ]	
+}
+//State object holds all regions for each state.
+//Access with stateObject.property
 var stateObject = {
 "Alabama": ["auburn","bham","dothan","shoals","gadsden","huntsville","mobile","montgomery","tuscaloosa"],
 "Alaska": [],

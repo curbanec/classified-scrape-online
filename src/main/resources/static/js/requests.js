@@ -1,5 +1,5 @@
 $.getScript("/js/regionsForStates.js", function(data, textStatus, jqxhr) {
-console.log('Load was performed.');
+console.log('Load was performed for ajax requests.');
 });
 
 function sendStateCrawlerQuery() {

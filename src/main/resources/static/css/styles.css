@@ -1,10 +1,6 @@
 .wrapper {
 	text-align: center;
-	margin-top: 100px;
-}
-
-.newCSSClass {
-	background-color: AliceBlue;
+	/*margin-top: 100px;*/
 }
 
 .makeMeInline {
@@ -14,4 +10,17 @@
 .amazonForm {
 	margin-top: 10px;
 	background-color: #ffd7b5;
+}
+
+.iconCss{
+	height: 5px;
+	
+	
+	
+}
+
+body, html {
+   border: 0;
+   padding: 0;
+   margin: 0;
 }
