@@ -5,7 +5,7 @@
  * $(window).smartresize(function(){  
  *     // code here
  * });
- *//*
+ */
 (function($,sr){
     // debouncing function from John Hann
     // http://unscriptable.com/index.php/2009/03/20/debouncing-javascript-methods/
@@ -33,11 +33,11 @@
     jQuery.fn[sr] = function(fn){  return fn ? this.bind('resize', debounce(fn)) : this.trigger(sr); };
 
 })(jQuery,'smartresize');
-*//**
+/**
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
- *//*
+ */
 
 var CURRENT_URL = window.location.href.split('#')[0].split('?')[0],
     $BODY = $('body'),
@@ -300,9 +300,6 @@ if (typeof NProgress != 'undefined') {
 	
 	  //hover and retain popover when on popover content
         var originalLeave = $.fn.popover.Constructor.prototype.leave;
-        
-        
-        
         $.fn.popover.Constructor.prototype.leave = function(obj) {
           var self = obj instanceof this.constructor ?
             obj : $(obj.currentTarget)[this.type](this.getDelegateOptions()).data('bs.' + this.type);
@@ -479,7 +476,7 @@ if (typeof NProgress != 'undefined') {
 				lines: {
 					show: true,
 					fill: true,
-					lineWidth: 8,
+					lineWidth: 2,
 					steps: false
 				},
 				points: {
@@ -591,7 +588,7 @@ if (typeof NProgress != 'undefined') {
 	} 
 	
 		
-	 STARRR 
+	/* STARRR */
 			
 	function init_starrr() {
 		
@@ -800,7 +797,7 @@ if (typeof NProgress != 'undefined') {
 	
 	}   
 	   	   
-	 SPARKLINES 
+	/* SPARKLINES */
 			
 		function init_sparklines() {
 			
@@ -918,7 +915,7 @@ if (typeof NProgress != 'undefined') {
 		};   
 	   
 	   
-	    AUTOCOMPLETE 
+	   /* AUTOCOMPLETE */
 			
 		function init_autocomplete() {
 			
@@ -941,7 +938,7 @@ if (typeof NProgress != 'undefined') {
 			
 		};
 	   
-	  AUTOSIZE 
+	 /* AUTOSIZE */
 			
 		function init_autosize() {
 			
@@ -953,14 +950,14 @@ if (typeof NProgress != 'undefined') {
 			
 		};  
 	   
-	    PARSLEY 
+	   /* PARSLEY */
 			
 		function init_parsley() {
 			
 			if( typeof (parsley) === 'undefined'){ return; }
 			console.log('init_parsley');
 			
-			$.listen('parsley:field:validate', function() {
+			$/*.listen*/('parsley:field:validate', function() {
 			  validateFront();
 			});
 			$('#demo-form .btn').on('click', function() {
@@ -977,7 +974,7 @@ if (typeof NProgress != 'undefined') {
 			  }
 			};
 		  
-			$.listen('parsley:field:validate', function() {
+			$/*.listen*/('parsley:field:validate', function() {
 			  validateFront();
 			});
 			$('#demo-form2 .btn').on('click', function() {
@@ -1001,7 +998,7 @@ if (typeof NProgress != 'undefined') {
 		};
 	   
 		
-		   INPUTS 
+		  /* INPUTS */
 		  
 			function onAddTag(tag) {
 				alert("Added a tag: " + tag);
@@ -1028,7 +1025,7 @@ if (typeof NProgress != 'undefined') {
 				
 		    };
 	   
-		 SELECT2 
+		/* SELECT2 */
 	  
 		function init_select2() {
 			 
@@ -1048,7 +1045,7 @@ if (typeof NProgress != 'undefined') {
 			
 		};
 	   
-	    WYSIWYG EDITOR 
+	   /* WYSIWYG EDITOR */
 
 		function init_wysiwyg() {
 			
@@ -1122,7 +1119,7 @@ if (typeof NProgress != 'undefined') {
 	
     };
 	  
-	 CROPPER 
+	/* CROPPER */
 		
 		function init_cropper() {
 			
@@ -1355,9 +1352,9 @@ if (typeof NProgress != 'undefined') {
 			
 		};
 		
-		 CROPPER --- end   
+		/* CROPPER --- end */  
 	  
-		 KNOB 
+		/* KNOB */
 	  
 		function init_knob() {
 		
@@ -1375,9 +1372,9 @@ if (typeof NProgress != 'undefined') {
 				  cancel: function() {
 					console.log("cancel : ", this);
 				  },
-				  format : function (value) {
+				  /*format : function (value) {
 				   return value + '%';
-				   },
+				   },*/
 				  draw: function() {
 
 					// "tron" case
@@ -1463,7 +1460,7 @@ if (typeof NProgress != 'undefined') {
 				
 		};
 	 
-		 INPUT MASK 
+		/* INPUT MASK */
 			
 		function init_InputMask() {
 			
@@ -1474,7 +1471,7 @@ if (typeof NProgress != 'undefined') {
 				
 		};
 	  
-		 COLOR PICKER 
+		/* COLOR PICKER */
 			 
 		function init_ColorPicker() {
 			
@@ -1498,7 +1495,7 @@ if (typeof NProgress != 'undefined') {
 		}; 
 	   
 	   
-		 ION RANGE SLIDER 
+		/* ION RANGE SLIDER */
 			
 		function init_IonRangeSlider() {
 			
@@ -1569,7 +1566,7 @@ if (typeof NProgress != 'undefined') {
 		};
 	   
 	   
-	    DATERANGEPICKER 
+	   /* DATERANGEPICKER */
 	   
 		function init_daterangepicker() {
 
@@ -1779,7 +1776,7 @@ if (typeof NProgress != 'undefined') {
 	
 		}
 	   
-	    SMART WIZARD 
+	   /* SMART WIZARD */
 		
 		function init_SmartWizard() {
 			
@@ -1799,7 +1796,7 @@ if (typeof NProgress != 'undefined') {
 		};
 	   
 	   
-	   VALIDATOR 
+	  /* VALIDATOR */
 
 	  function init_validator () {
 		 
@@ -1836,7 +1833,7 @@ if (typeof NProgress != 'undefined') {
 	  
 	  };
 	   
-	  	 PNotify 
+	  	/* PNotify */
 			
 		function init_PNotify() {
 			
@@ -1868,7 +1865,7 @@ if (typeof NProgress != 'undefined') {
 		}; 
 	   
 	   
-	    CUSTOM NOTIFICATION 
+	   /* CUSTOM NOTIFICATION */
 			
 		function init_CustomNotification() {
 			
@@ -1925,7 +1922,7 @@ if (typeof NProgress != 'undefined') {
 			
 		};
 		
-			 EASYPIECHART 
+			/* EASYPIECHART */
 			
 			function init_EasyPieChart() {
 				
@@ -2388,7 +2385,7 @@ if (typeof NProgress != 'undefined') {
 			}
 		}
 
-		 COMPOSE 
+		/* COMPOSE */
 		
 		function init_compose() {
 		
@@ -2401,7 +2398,7 @@ if (typeof NProgress != 'undefined') {
 		
 		};
 	   
-	   	 CALENDAR 
+	   	/* CALENDAR */
 		  
 		    function  init_calendar() {
 					
@@ -2504,7 +2501,7 @@ if (typeof NProgress != 'undefined') {
 				
 			};
 	   
-		 DATA TABLES 
+		/* DATA TABLES */
 			
 			function init_DataTables() {
 				
@@ -2591,7 +2588,7 @@ if (typeof NProgress != 'undefined') {
 				
 			};
 	   
-			 CHART - MORRIS  
+			/* CHART - MORRIS  */
 		
 		function init_morris_charts() {
 			
@@ -2750,7 +2747,7 @@ if (typeof NProgress != 'undefined') {
 	   
 		
 		
-		 ECHRTS 
+		/* ECHRTS */
 	
 		
 		function init_echarts() {
@@ -5068,4 +5065,3 @@ if (typeof NProgress != 'undefined') {
 	});	
 	
 
-*/

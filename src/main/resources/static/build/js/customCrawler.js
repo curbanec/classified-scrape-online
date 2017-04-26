@@ -51,23 +51,10 @@ function setupGraph(data){
 	}
 
 $.ajax({
-	url:"/api/dashboardPopulate/applicationActivites", 
+	url:"/api/dashboardPopulate/applicationActivites?from=2017-04-19andto=2017-04-29", 
 	type:'GET',
 	success:function(data){
 		stuffs=data;
 		setupGraph(data);
 	}
 }); 
-
-
-
-
-
-
-
-
-
-
-
-
-
