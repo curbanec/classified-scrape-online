@@ -386,27 +386,6 @@ if (typeof NProgress != 'undefined') {
 		
 		var chart_plot_02_data = [];
 		
-		var chart_plot_03_data = [
-			[0, 1],
-			[1, 9],
-			[2, 6],
-			[3, 10],
-			[4, 5],
-			[5, 17],
-			[6, 6],
-			[7, 10],
-			[8, 7],
-			[9, 11],
-			[10, 35],
-			[11, 9],
-			[12, 12],
-			[13, 5],
-			[14, 3],
-			[15, 4],
-			[16, 9]
-		];
-		
-		
 		for (var i = 0; i < 30; i++) {
 		  chart_plot_02_data.push([new Date(Date.today().add(i).days()).getTime(), randNum() + i + i + 10]);
 		}
@@ -520,30 +499,6 @@ if (typeof NProgress != 'undefined') {
 				max: chart_plot_02_data[20][0]
 			}
 		};	
-	
-		var chart_plot_03_settings = {
-			series: {
-				curvedLines: {
-					apply: true,
-					active: true,
-					monotonicFit: true
-				}
-			},
-			colors: ["#26B99A"],
-			grid: {
-				borderWidth: {
-					top: 0,
-					right: 0,
-					bottom: 1,
-					left: 1
-				},
-				borderColor: {
-					bottom: "#7F8790",
-					left: "#7F8790"
-				}
-			}
-		};
-        
 		
         if ($("#chart_plot_01").length){
 			console.log('Plot1');
@@ -566,25 +521,7 @@ if (typeof NProgress != 'undefined') {
 					fillColor: "#fff" } 
 			}], chart_plot_02_settings);
 			
-		}
-		
-		if ($("#chart_plot_03").length){
-			console.log('Plot3');
-			
-			
-			$.plot($("#chart_plot_03"), [{
-				label: "Registrations",
-				data: chart_plot_03_data,
-				lines: {
-					fillColor: "rgba(150, 202, 89, 0.12)"
-				}, 
-				points: {
-					fillColor: "#fff"
-				}
-			}], chart_plot_03_settings);
-			
-		};
-	  
+		}  
 	} 
 	
 		
