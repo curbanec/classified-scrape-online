@@ -4,8 +4,8 @@
   <artifactId>MyBatis</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   
-  	<name>Second Attempt at University app</name>
-	<description>JPA Many-To-Many Example</description>
+  	<name>WebCrawlerLite</name>
+	<description>UI version of WebCrawler</description>
 	
 	<parent>
         <groupId>org.springframework.boot</groupId>
