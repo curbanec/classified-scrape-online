@@ -1474,7 +1474,7 @@ if (typeof NProgress != 'undefined') {
 		};
 	   
 	   
-	   /* DATERANGEPICKER */
+	   /* DATERANGEPICKER 
 	   
 		function init_daterangepicker() {
 
@@ -1682,7 +1682,7 @@ if (typeof NProgress != 'undefined') {
 			  }
 			});
 	
-		}
+		}*/
 	   
 	   /* SMART WIZARD */
 		
@@ -4947,10 +4947,10 @@ if (typeof NProgress != 'undefined') {
 		init_ColorPicker();
 		init_TagsInput();
 		init_parsley();
-		init_daterangepicker();
+		/*init_daterangepicker();
 		init_daterangepicker_right();
 		init_daterangepicker_single_call();
-		init_daterangepicker_reservation();
+		init_daterangepicker_reservation();*/
 		init_SmartWizard();
 		init_EasyPieChart();
 		init_charts();
@@ -4971,5 +4971,3 @@ if (typeof NProgress != 'undefined') {
 		init_autocomplete();
 				
 	});	
-	
-

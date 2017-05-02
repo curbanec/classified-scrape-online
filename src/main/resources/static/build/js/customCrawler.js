@@ -77,5 +77,28 @@ $(document).ready(function() {
 
         $ICON.toggleClass('fa-chevron-up fa-chevron-down');
     });
+});
 
+$(function() {
+    $('#reportrange').daterangepicker();
+});
+
+$(function(){
+	$('.applyBtn').on('click', function(){
+		var to = $('input[name="daterangepicker_start"]').val().replace(/\//g,"");
+		var from = $('input[name="daterangepicker_end"]').val().replace(/\//g,"");
+		console.log(to)
+		console.log(from)
+		
+		$.ajax({
+			url:"/api/dashboardPopulate/applicationActivites?from=" + from + "&to=" + to, 
+			type:'GET',
+			success:function(data){
+				stuffs=data;
+				setupGraph(data);
+			}
+		}); 
+		
+		console.log('awwYeaa');
+	});
 });
