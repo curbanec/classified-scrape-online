@@ -80,13 +80,17 @@ $(document).ready(function() {
 });
 
 $(function() {
-    $('#reportrange').daterangepicker();
+    $('#reportrange').daterangepicker({
+    	 locale: {
+             format: 'YYYY/MM/DD'
+         }	
+    	});
 });
 
 $(function(){
 	$('.applyBtn').on('click', function(){
-		var to = $('input[name="daterangepicker_start"]').val().replace(/\//g,"");
-		var from = $('input[name="daterangepicker_end"]').val().replace(/\//g,"");
+		var from = $('input[name="daterangepicker_start"]').val().replace(/\//g,"");
+		var to = $('input[name="daterangepicker_end"]').val().replace(/\//g,"");
 		console.log(to)
 		console.log(from)
 		
@@ -94,11 +98,8 @@ $(function(){
 			url:"/api/dashboardPopulate/applicationActivites?from=" + from + "&to=" + to, 
 			type:'GET',
 			success:function(data){
-				stuffs=data;
 				setupGraph(data);
 			}
 		}); 
-		
-		console.log('awwYeaa');
 	});
 });
