@@ -22,19 +22,6 @@ function disable(event) {
 function addToSearchList(){
 	var li = document.createElement("LI"); 
 	li.innerHTML = "hey";
-	var input = document.getElementById("appendToME");
-    document.getElementById("appendToME").appendChild(li);
+	var input = document.getElementById("alertsSection");
+    document.getElementById("alertsSection").appendChild(li);
 }
-
-$("#buttonsHeader button").click(function() {
-    var id = $(this).attr("id");
-    $("#wrapperDiv div").css("display", "none");
-    $("#wrapperDiv div#" + id + "").css("display", "block");
-    $("#wrapperDiv div#" + id + "").css("visibility", "visible");
-    
-    $("#wrapperDiv div#" + id + " div#displayDropDownRegion").css("display", "inline-block");
-    $("#wrapperDiv div#" + id + " div#displayDropDownRegion").css("visibility", "visible");
-    
-    $("#wrapperDiv div#" + id + " div#displayDropDownState").css("display", "inline-block");
-    $("#wrapperDiv div#" + id + " div#displayDropDownState").css("visibility", "visible");
-});
