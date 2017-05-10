@@ -19,19 +19,64 @@ function disable(event) {
 }
 
 function addToSearchList(){
-	/*var li = document.createElement("LI"); 
-	li.innerHTML = "hey";
-	var input = document.getElementById("alertsSection");
-    document.getElementById("alertsSection").appendChild(li);*/
-    
-    var table = document.getElementById("tableBody");
-    var row = table.insertRow(0);
-   
-    var cell2 = row.insertCell(1);
-    
-    //http://api.jquery.com/append/
-    
-    cell1.innerHTML = "<td class="a-center "><input type="checkbox" class="flat" name="table_records"></td>";
-    cell2.innerHTML = "NEW CELL2";
-    
+	$('#tableBody').append('<tr class="odd pointer"> <td class="a-center "> <input type="checkbox" class="flat" name="table_records"> </td>  <td class=" ">121000040</td><td class=" ">May 23, 2014 11:47:56 PM </td><td class=" ">121000210 <i class="success fa fa-long-arrow-up"></i></td><td class=" ">John Blank L</td><td class=" ">Paid</td><td class="a-right a-right ">$7.45</td><td class=" last"><a href="#">View</a></td></tr>');
+	    if ($("input.flat")[0]) {
+	        $(document).ready(function () {
+	            $('input.flat').iCheck({
+	                checkboxClass: 'icheckbox_flat-green',
+	                radioClass: 'iradio_flat-green'
+	            });
+	        });
+	    }
+	    $('table input').on('ifChecked', function () {
+	        checkState = '';
+	        $(this).parent().parent().parent().addClass('selected');
+	        countChecked();
+	    });
+	    $('table input').on('ifUnchecked', function () {
+	        checkState = '';
+	        $(this).parent().parent().parent().removeClass('selected');
+	        countChecked();
+	    });
+
+	    var checkState = '';
+
+	    $('.bulk_action input').on('ifChecked', function () {
+	        checkState = '';
+	        $(this).parent().parent().parent().addClass('selected');
+	        countChecked();
+	    });
+	    $('.bulk_action input').on('ifUnchecked', function () {
+	        checkState = '';
+	        $(this).parent().parent().parent().removeClass('selected');
+	        countChecked();
+	    });
+	    $('.bulk_action input#check-all').on('ifChecked', function () {
+	        checkState = 'all';
+	        countChecked();
+	    });
+	    $('.bulk_action input#check-all').on('ifUnchecked', function () {
+	        checkState = 'none';
+	        countChecked();
+	    });
+
+	    function countChecked() {
+	        if (checkState === 'all') {
+	            $(".bulk_action input[name='table_records']").iCheck('check');
+	        }
+	        if (checkState === 'none') {
+	            $(".bulk_action input[name='table_records']").iCheck('uncheck');
+	        }
+
+	        var checkCount = $(".bulk_action input[name='table_records']:checked").length;
+
+	        if (checkCount) {
+	            $('.column-title').hide();
+	            $('.bulk-actions').show();
+	            $('.action-cnt').html(checkCount + ' Records Selected');
+	        } else {
+	            $('.column-title').show();
+	            $('.bulk-actions').hide();
+	        }
+	    }    
 }
