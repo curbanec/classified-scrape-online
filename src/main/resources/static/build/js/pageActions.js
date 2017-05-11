@@ -19,7 +19,8 @@ function disable(event) {
 }
 
 function addToSearchList(){
-	$('#tableBody').append('<tr class="odd pointer"> <td class="a-center "> <input type="checkbox" class="flat" name="table_records"> </td>  <td class=" ">121000040</td><td class=" ">May 23, 2014 11:47:56 PM </td><td class=" ">121000210 <i class="success fa fa-long-arrow-up"></i></td><td class=" ">John Blank L</td><td class=" ">Paid</td><td class="a-right a-right ">$7.45</td><td class=" last"><a href="#">View</a></td></tr>');
+	var Area = 'City of Chicago'
+	$('#tableBody').append('<tr class="odd pointer"> <td class="a-center "> <input type="checkbox" class="flat" name="table_records"> </td>  <td class=" ">'+ Area +'</td><td class=" ">May 23, 2014 11:47:56 PM </td><td class=" ">1</td><td class=" ">Rival Sons tickets May 25th</td><td class=" ">urbo143851@gmail.com</td><td class="a-right a-right ">true</td></tr>');
 	    if ($("input.flat")[0]) {
 	        $(document).ready(function () {
 	            $('input.flat').iCheck({
