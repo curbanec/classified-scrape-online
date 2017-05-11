@@ -26,6 +26,7 @@ function addToSearchList(){
 	var notifyAddress = 'urbo143851@gmail.com';
 	// var active = '';
 	
+	var json = {"datePosted":datePosted, "area":area, "query":query, "notifyAddress":notifyAddress};
 	
 	
 	
@@ -92,20 +93,14 @@ function addToSearchList(){
 	    }  
 	    
 	    $.ajax({
-			url:"/api/dashboardPopulate/applicationActivites?from=" + from + "&to=" + to, 
+	    	headers: { 'Content-Type': 'application/json' },
+			url:"/api/createAlert", 
 			type:'POST',
-			success:function(data){
-				setupGraph(data);
-			}
+			dataType:'json', 
+			contentType:'application/json',
+			data:JSON.stringify(json)
 		}); 
 	    
 	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
+	    	    
 }
