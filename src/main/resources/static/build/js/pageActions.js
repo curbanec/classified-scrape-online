@@ -19,8 +19,18 @@ function disable(event) {
 }
 
 function addToSearchList(){
-	var Area = 'City of Chicago'
-	$('#tableBody').append('<tr class="odd pointer"> <td class="a-center "> <input type="checkbox" class="flat" name="table_records"> </td>  <td class=" ">'+ Area +'</td><td class=" ">May 23, 2014 11:47:56 PM </td><td class=" ">1</td><td class=" ">Rival Sons tickets May 25th</td><td class=" ">urbo143851@gmail.com</td><td class="a-right a-right ">true</td></tr>');
+	var area = 'City of Chicago'
+	var submissionTime = new Date(); // May 23, 2014 11:47:56 PM
+	// var listenerDuration = '';
+	var query = 'Rival Sons May 25th';
+	var notifyAddress = 'urbo143851@gmail.com';
+	// var active = '';
+	
+	
+	
+	
+	
+	$('#tableBody').append('<tr class="odd pointer"> <td class="a-center "> <input type="checkbox" class="flat" name="table_records"> </td>  <td class=" ">'+ area +'</td><td class=" ">'+ submissionTime +'</td><td class=" ">1</td><td class=" ">'+ query +'</td><td class=" ">'+ notifyAddress +'</td><td class="a-right a-right ">true</td></tr>');
 	    if ($("input.flat")[0]) {
 	        $(document).ready(function () {
 	            $('input.flat').iCheck({
@@ -79,5 +89,23 @@ function addToSearchList(){
 	            $('.column-title').show();
 	            $('.bulk-actions').hide();
 	        }
-	    }    
+	    }  
+	    
+	    $.ajax({
+			url:"/api/dashboardPopulate/applicationActivites?from=" + from + "&to=" + to, 
+			type:'POST',
+			success:function(data){
+				setupGraph(data);
+			}
+		}); 
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
 }
