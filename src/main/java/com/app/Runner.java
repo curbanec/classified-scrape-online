@@ -1,5 +1,6 @@
 package com.app;
 
+import java.util.HashMap;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -15,12 +16,17 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @Configuration
 
 public class Runner implements CommandLineRunner{
+	
+	public static HashMap<String, String> AlertsDatabase = new HashMap<String, String>();
 		
 	public static void main(String[] args){
+
 		SpringApplication.run(Runner.class, args);
 		}
 	
-	//TODO future startup functionality 
 	public void run(String... strings) throws Exception {}
+	
+	public HashMap<String, String> getAlertsDatabase(){
+		return AlertsDatabase;
+	}
 }
-

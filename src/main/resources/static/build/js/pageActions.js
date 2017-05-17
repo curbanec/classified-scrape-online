@@ -1,6 +1,9 @@
 $.getScript("/js/regionsForStates.js", function(data, textStatus, jqxhr) {
 	console.log('Load was performed for state dropdown.');
 	});
+$.getScript("/js/dateFormat.js", function(data, textStatus, jqxhr) {
+	console.log('Load was performed for dateFormat.');
+	});
 
 $("#maxDepth").on("click", disable);
 $("#alertForm").on("click", addToSearchList);
@@ -19,17 +22,24 @@ function disable(event) {
 }
 
 function addToSearchList(){
-	var area = 'City of Chicago'
+	
+	var area = $('#area').val();
 	var submissionTime = new Date(); // May 23, 2014 11:47:56 PM
+	var submissionTimeDate = dateFormat(submissionTime, "yyyy-mm-d HH:MM");
+	console.log(submissionTimeDate);
+	var queryId = Math.floor((Math.random() * 1000000) + 1);
 	// var listenerDuration = '';
-	var query = 'Rival Sons May 25th';
-	var notifyAddress = 'urbo143851@gmail.com';
+	var query = $('#query').val();
+	var notifyAddress = $('#notifyAddress').val();
 	// var active = '';
 	
-	var json = {"datePosted":datePosted, "area":area, "query":query, "notifyAddress":notifyAddress};
+	/*var secs = 60 * 1000;
+	setInterval(function() {
+	    var $badge = $('#nhb_01');
+	    $badge.text((parseFloat($badge.text())+0.17).toFixed(2));
+	}, secs);*/
 	
-	
-	
+	var json = {"submissionTimeDate":submissionTimeDate, "area":area, "query":query, "notifyAddress":notifyAddress, "queryId":queryId};
 	
 	$('#tableBody').append('<tr class="odd pointer"> <td class="a-center "> <input type="checkbox" class="flat" name="table_records"> </td>  <td class=" ">'+ area +'</td><td class=" ">'+ submissionTime +'</td><td class=" ">1</td><td class=" ">'+ query +'</td><td class=" ">'+ notifyAddress +'</td><td class="a-right a-right ">true</td></tr>');
 	    if ($("input.flat")[0]) {
@@ -94,7 +104,7 @@ function addToSearchList(){
 	    
 	    $.ajax({
 	    	headers: { 'Content-Type': 'application/json' },
-			url:"/api/createAlert", 
+			url:"/api/main/createAlert", 
 			type:'POST',
 			dataType:'json', 
 			contentType:'application/json',

@@ -5,20 +5,22 @@ public class AlertDto {
     
     public AlertDto(){};
     
-    public String datePosted;
+    public String submissionTimeDate;
     
     public String area;
     
     public String query;
     
+    public String queryId;
+    
     public String notifyAddress;
 
-	public String getDatePosted() {
-		return datePosted;
+	public String getSubmissionTimeDate() {
+		return submissionTimeDate;
 	}
 
-	public void setDatePosted(String datePosted) {
-		this.datePosted = datePosted;
+	public void setSubmissionTimeDate(String submissionTimeDate) {
+		this.submissionTimeDate = submissionTimeDate;
 	}
 
 	public String getArea() {
@@ -43,5 +45,13 @@ public class AlertDto {
 
 	public void setNotifyAddress(String notifyAddress) {
 		this.notifyAddress = notifyAddress;
-	}       
+	}
+
+	public String getQueryId() {
+		return queryId;
+	}
+
+	public void setQueryId(String queryId) {
+		this.queryId = queryId;
+	}   
 }

@@ -212,7 +212,7 @@
                             <div class="form-group">
                         	<label class="control-label col-md-3 col-sm-3 col-xs-12">Area</label>
                         		<div class="col-md-9 col-sm-9 col-xs-12">
-                          			<select class="select2_group form-control"> <!-- removed form-control class -->
+                          			<select id="area" class="select2_group form-control"> <!-- removed form-control class -->
                               			<option value="chc">City of Chicago</option>
                               			<option value="nch">North Chicagoland</option>
                               			<option value="wcl">West Chicagoland</option>
@@ -226,14 +226,14 @@
                           <div class="form-group">
                         	<label class="control-label col-md-3 col-sm-3 col-xs-12">Search Input</label>
                        			<div class="col-md-9 col-sm-9 col-xs-12">
-                          		<input type="text" class="form-control" placeholder="Enter Query">
+                          		<input id="query" type="text" class="form-control" placeholder="Enter Query">
                         		</div>
                       		</div>
                           
                            <div class="form-group">
                         	<label class="control-label col-md-3 col-sm-3 col-xs-12">Email Address</label>
                        			<div class="col-md-9 col-sm-9 col-xs-12">
-                          		<input type="text" class="form-control" placeholder="Enter Notify Email">
+                          		<input id="notifyAddress" type="text" class="form-control" placeholder="Enter Notify Email">
                         		</div>
                       		</div>
                           
@@ -378,6 +378,6 @@
     <script src="../build/js/custom.js"></script>
     <script src="../build/js/customCrawler.js"></script>
     <script src="../build/js/pageActions.js"></script>
-	
+   	
   </body>
 </html>
