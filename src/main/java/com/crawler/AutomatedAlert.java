@@ -48,11 +48,6 @@ public class AutomatedAlert {
 					
 					HtmlElement price = (HtmlElement) item.getFirstByXPath(".//span[2]/span");
 
-					System.out.println(description.asText());
-					System.out.println(price.asText());
-					System.out.println(postingDate);
-					System.out.println(pid);
-					
 					java.util.Date submissionTimeDate = dateFormatter.parse(submissionTime);
 					java.util.Date postingTimeDate = dateFormatter.parse(postingDate);
 					
@@ -62,6 +57,11 @@ public class AutomatedAlert {
 					if(postingTimeDate.after(submissionTimeDate) && !inDatabase(queryId, pid)){
 						System.out.println("Sending Email");
 						System.out.println("Adding to Database");
+						
+						System.out.println(description.asText());
+						System.out.println(price.asText());
+						System.out.println(postingDate);
+						System.out.println(pid);
 						Runner.AlertsDatabase.put(queryId + pid, description.asText() + " " + price.asText() + " " + postingDate);
 						
 					}

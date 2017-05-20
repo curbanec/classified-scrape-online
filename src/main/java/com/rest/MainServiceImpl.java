@@ -69,6 +69,7 @@ public class MainServiceImpl implements MainService {
 		
 	}*/
 	
+	@SuppressWarnings("unused")
 	@POST
 	@Path("/createAlert")
 	public Response createAlert(AlertDto alertDto){
@@ -87,9 +88,6 @@ public class MainServiceImpl implements MainService {
 		ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 		final Runnable svc = new Runnable(){public void run() { AutomatedAlert alert = new AutomatedAlert(); alert.runPrimary(region, query, queryId, submissionTimeDate);}};
 		final ScheduledFuture<?> future = scheduler.scheduleAtFixedRate(svc, 10, 10, java.util.concurrent.TimeUnit.SECONDS);
-		try {
-			future.get();
-		} catch (Exception e) { e.printStackTrace(); } 
 		
 		return Response.status(200).build();
 	}     
