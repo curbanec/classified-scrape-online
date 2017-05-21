@@ -1,8 +1,8 @@
-package com.rest;
+package com.dto;
 
 import java.util.List;
 
-public class CRequest {
+public class CRequestDto {
 
 	String pages;
 	

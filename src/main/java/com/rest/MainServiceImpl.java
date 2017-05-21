@@ -9,12 +9,14 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.crawler.Crawler;
 import com.crawler.CrawlerServiceFactory;
 import com.crawler.AutomatedAlert;
 import com.dto.AlertDto;
+import com.dto.CRequestDto;
 
 // TODO send type of crawler in request instead of hardcoding it. 
 @Path("/main")
@@ -38,7 +40,7 @@ public class MainServiceImpl implements MainService {
 
 	@POST
 	@Path("/initiateStateCrawler")
-	public Response initiateStateCrawler(CRequest request) {
+	public Response initiateStateCrawler(CRequestDto request) {
 
 		Crawler crawler = crawlerServiceFactory.retrieveCrawler(request.getTypeOf());
 		
@@ -47,29 +49,7 @@ public class MainServiceImpl implements MainService {
 		return crawler.getStatus();
 	}
 	
-	/*@GET 
-	@Path("/createAlert/{region}/{query}")
-	public Response createAlert(@PathParam("region") final String region, @PathParam("query") final String query){
-		
-		ThreadSafeAlert alert = new ThreadSafeAlert();
-		alert.runPrimary(region, query);
-		
-		Alert runAlertJob = new Alert(region, query);
-		Thread newThread = new Thread(runAlertJob);
-		newThread.start();
-		
-		ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
-		final Runnable svc = new Runnable(){public void run() { ThreadSafeAlert alert = new ThreadSafeAlert(); alert.runPrimary(region, query);}};
-		final ScheduledFuture<?> hmm = scheduler.scheduleAtFixedRate(svc, 10, 10, java.util.concurrent.TimeUnit.SECONDS);
-		try {
-			hmm.get();
-		} catch (Exception e) { e.printStackTrace(); } 
-		
-		return Response.status(200).build();
-		
-	}*/
-	
-	@SuppressWarnings("unused")
+	@SuppressWarnings({ "unused"})
 	@POST
 	@Path("/createAlert")
 	public Response createAlert(AlertDto alertDto){
@@ -78,17 +58,37 @@ public class MainServiceImpl implements MainService {
 		final String query = alertDto.getQuery();
 		final String queryId = alertDto.getQueryId();
 		final String submissionTimeDate = alertDto.getSubmissionTimeDate();
-		
-		/*ThreadSafeAlert alert = new ThreadSafeAlert();
-		alert.runPrimary(alertDto.getArea(), alertDto.getQuery());
-		Alert runAlertJob = new Alert(alertDto.getArea(), query);
-		Thread newThread = new Thread(runAlertJob);
-		newThread.start();*/
-		
+
 		ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
-		final Runnable svc = new Runnable(){public void run() { AutomatedAlert alert = new AutomatedAlert(); alert.runPrimary(region, query, queryId, submissionTimeDate);}};
+	    Runnable svc = new Runnable(){
+	    	public void run() {
+			
+	    		AutomatedAlert alert = new AutomatedAlert(); 
+	    		alert.runPrimary(region, query, queryId, submissionTimeDate); 
+	    		Thread.currentThread().setName(queryId); 
+	    		System.out.println(Thread.currentThread().getName());
+				}
+		};
+		
 		final ScheduledFuture<?> future = scheduler.scheduleAtFixedRate(svc, 10, 10, java.util.concurrent.TimeUnit.SECONDS);
 		
 		return Response.status(200).build();
-	}     
+	}
+	
+	@SuppressWarnings("deprecation")
+	@GET
+	@Path("/cancel")
+	public Response cancelAlert(@QueryParam("queryId") String queryId){
+		
+		ThreadGroup threadGroup = Thread.currentThread( ).getThreadGroup( );
+		Thread[] threads = new Thread[ threadGroup.activeCount()];
+		threadGroup.enumerate(threads);
+		for(int i=0;i<threads.length;i++){
+			if(queryId.equals(threads[i].getName())){
+				(threads[i]).stop();
+				System.out.println("stopping: " + threads[i].getName());
+			}
+		}
+		return Response.status(200).build();	
+	}
 }
