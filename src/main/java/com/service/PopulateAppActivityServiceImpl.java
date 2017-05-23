@@ -1,4 +1,4 @@
-package com.rest;
+package com.service;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +7,7 @@ import com.dao.ClickRecordRepository;
 import com.domain.ClickRecord;
 
 @Component
-public class PopulateServiceImpl {
+public class PopulateAppActivityServiceImpl {
 	
 @Autowired
 ClickRecordRepository clickRecordRepository;

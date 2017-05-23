@@ -8,14 +8,15 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.domain.ClickRecord;
+import com.service.PopulateAppActivityServiceImpl;
 
 @Path("/dashboardPopulate")
 @Produces(value = "application/json")
 @Consumes(value = "application/json")
-public class DashboardPopulateServiceImpl {
+public class DashboardPopulateResource {
 	
 	@Autowired
-	PopulateServiceImpl populateServiceImpl;
+	PopulateAppActivityServiceImpl populateServiceImpl;
 
 	@GET
 	@Path("/applicationActivites")

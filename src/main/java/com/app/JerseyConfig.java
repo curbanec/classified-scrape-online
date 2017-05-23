@@ -4,8 +4,8 @@ import javax.ws.rs.ApplicationPath;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.context.annotation.Configuration;
 
-import com.rest.DashboardPopulateServiceImpl;
-import com.rest.MainServiceImpl;
+import com.rest.DashboardPopulateResource;
+import com.rest.MainServiceResource;
 
 @Configuration
 @ApplicationPath("/api")
@@ -17,7 +17,7 @@ public class JerseyConfig extends ResourceConfig{
 	
 	private void registerEndpoints(){
 		System.out.println("registerEndpoints() called");
-		this.register(MainServiceImpl.class);
-		this.register(DashboardPopulateServiceImpl.class);
+		this.register(MainServiceResource.class);
+		this.register(DashboardPopulateResource.class);
 	}
 }

@@ -1,5 +1,6 @@
 package com.rest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -8,9 +9,6 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
-
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.concurrent.AlertManager;
 import com.crawler.Crawler;
 import com.crawler.CrawlerServiceFactory;
@@ -21,7 +19,7 @@ import com.dto.CRequestDto;
 @Path("/main")
 @Produces(value = "application/json")
 @Consumes(value = "application/json")
-public class MainServiceImpl implements MainService {
+public class MainServiceResource {
 
 	@Autowired
 	CrawlerServiceFactory crawlerServiceFactory;
