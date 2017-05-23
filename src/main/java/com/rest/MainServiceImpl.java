@@ -1,8 +1,5 @@
 package com.rest;
 
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledFuture;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -11,10 +8,12 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
+
 import org.springframework.beans.factory.annotation.Autowired;
+
+import com.concurrent.AlertManager;
 import com.crawler.Crawler;
 import com.crawler.CrawlerServiceFactory;
-import com.crawler.AutomatedAlert;
 import com.dto.AlertDto;
 import com.dto.CRequestDto;
 
@@ -49,46 +48,21 @@ public class MainServiceImpl implements MainService {
 		return crawler.getStatus();
 	}
 	
-	@SuppressWarnings({ "unused"})
 	@POST
 	@Path("/createAlert")
-	public Response createAlert(AlertDto alertDto){
+	public Response createAlert(final AlertDto alertDto){
 		
-		final String region = alertDto.getArea();
-		final String query = alertDto.getQuery();
-		final String queryId = alertDto.getQueryId();
-		final String submissionTimeDate = alertDto.getSubmissionTimeDate();
-
-		ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
-	    Runnable svc = new Runnable(){
-	    	public void run() {
-			
-	    		AutomatedAlert alert = new AutomatedAlert(); 
-	    		alert.runPrimary(region, query, queryId, submissionTimeDate); 
-	    		Thread.currentThread().setName(queryId); 
-	    		System.out.println(Thread.currentThread().getName());
-				}
-		};
-		
-		final ScheduledFuture<?> future = scheduler.scheduleAtFixedRate(svc, 10, 10, java.util.concurrent.TimeUnit.SECONDS);
+		AlertManager.start(alertDto.getArea(), alertDto.getQuery(), alertDto.getQueryId(), alertDto.getSubmissionTimeDate());
 		
 		return Response.status(200).build();
 	}
 	
-	@SuppressWarnings("deprecation")
 	@GET
 	@Path("/cancel")
 	public Response cancelAlert(@QueryParam("queryId") String queryId){
+			
+		AlertManager.stop(queryId);
 		
-		ThreadGroup threadGroup = Thread.currentThread( ).getThreadGroup( );
-		Thread[] threads = new Thread[ threadGroup.activeCount()];
-		threadGroup.enumerate(threads);
-		for(int i=0;i<threads.length;i++){
-			if(queryId.equals(threads[i].getName())){
-				(threads[i]).stop();
-				System.out.println("stopping: " + threads[i].getName());
-			}
-		}
 		return Response.status(200).build();	
 	}
 }

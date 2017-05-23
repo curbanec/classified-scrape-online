@@ -1,3 +1,48 @@
+/*public static void start(final String region, final String query, final String queryId, final String submissionTimeDate) {
+
+String key = queryId;
+
+futures.put(key, scheduler.scheduleAtFixedRate(new Runnable() {
+    
+	@Override
+    public void run() {
+    	
+    	AutomatedAlert alert = new AutomatedAlert(); 
+		alert.runPrimary(region, query, queryId, submissionTimeDate); 
+		Thread.currentThread().setName(queryId); 
+		System.out.println(Thread.currentThread().getName());
+    }
+
+}, 10, 10, java.util.concurrent.TimeUnit.SECONDS));
+}
+
+// Interesting - keep 
+/*ThreadGroup threadGroup = Thread.currentThread( ).getThreadGroup( );
+Thread[] threads = new Thread[ threadGroup.activeCount()];
+threadGroup.enumerate(threads);
+for(int i=0;i<threads.length;i++){
+if(queryId.equals(threads[i].getName())){
+	(threads[i]).stop();
+	System.out.println("stopping: " + threads[i].getName());
+}
+}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 http://localhost:8080/api/main/initiateStateCrawler
 

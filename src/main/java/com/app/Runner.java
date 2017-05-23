@@ -1,6 +1,6 @@
 package com.app;
 
-import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -17,7 +17,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 public class Runner implements CommandLineRunner{
 	
-	public static HashMap<String, String> AlertsDatabase = new HashMap<String, String>();
+	public static ConcurrentHashMap<String, String> AlertsDatabase = new ConcurrentHashMap<String, String>();
 		
 	public static void main(String[] args){
 
@@ -26,7 +26,7 @@ public class Runner implements CommandLineRunner{
 	
 	public void run(String... strings) throws Exception {}
 	
-	public HashMap<String, String> getAlertsDatabase(){
+	public ConcurrentHashMap<String, String> getAlertsDatabase(){
 		return AlertsDatabase;
 	}
 }
