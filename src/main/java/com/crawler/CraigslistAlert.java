@@ -14,7 +14,7 @@ import com.gargoylesoftware.htmlunit.html.HtmlElement;
 import com.gargoylesoftware.htmlunit.html.HtmlListItem;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 
-public class AutomatedAlert {
+public class CraigslistAlert {
 	
 	boolean firstRun = true;
 	

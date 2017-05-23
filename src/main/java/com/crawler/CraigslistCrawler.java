@@ -14,7 +14,7 @@ import com.gargoylesoftware.htmlunit.html.HtmlListItem;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 
 @Component
-public class CraigsListCrawler implements Crawler {
+public class CraigslistCrawler implements Crawler {
 
 	WebClient client = new WebClient(BrowserVersion.CHROME);
 

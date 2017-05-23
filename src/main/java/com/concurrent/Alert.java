@@ -1,6 +1,6 @@
 package com.concurrent;
 
-import com.crawler.AutomatedAlert;
+import com.crawler.CraigslistAlert;
 
 public class Alert implements Runnable {
 
@@ -20,7 +20,7 @@ public class Alert implements Runnable {
 	@Override
 	public void run() {
 		
-		AutomatedAlert alert = new AutomatedAlert(); 
+		CraigslistAlert alert = new CraigslistAlert(); 
 		alert.runPrimary(region, query, queryId, submissionTimeDate); 
 		Thread.currentThread().setName(queryId); 
 		System.out.println(Thread.currentThread().getName());
