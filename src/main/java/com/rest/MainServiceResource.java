@@ -52,6 +52,8 @@ public class MainServiceResource {
 		
 		AlertManager.start(alertDto.getArea(), alertDto.getQuery(), alertDto.getQueryId(), alertDto.getSubmissionTimeDate());
 		
+		// alertServiceImpl.addAlert(alertDto);
+		
 		return Response.status(200).build();
 	}
 	

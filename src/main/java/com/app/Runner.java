@@ -9,7 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@ComponentScan(basePackages={"com.app", "com.crawler", "com.rest", "com.domain", "com.dao"})
+@ComponentScan(basePackages={"com.app", "com.crawler", "com.rest", "com.domain", "com.dao", "com.email", "com.service"})
 @EnableJpaRepositories("com.dao")
 @EntityScan(basePackages = "com.domain")
 @EnableAutoConfiguration
