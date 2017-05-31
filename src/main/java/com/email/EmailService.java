@@ -8,9 +8,7 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import org.springframework.stereotype.Component;
 
-@Component
 public class EmailService {
 	
 	public synchronized void sendEmail(String searchUrl , String customSearchQuery){
