@@ -1,6 +1,5 @@
 package com.rest;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -9,11 +8,13 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
+import org.springframework.beans.factory.annotation.Autowired;
 import com.concurrent.AlertManager;
 import com.crawler.Crawler;
 import com.crawler.CrawlerServiceFactory;
 import com.dto.AlertDto;
 import com.dto.CRequestDto;
+import com.service.AlertServiceImpl;
 
 // TODO send type of crawler in request instead of hardcoding it. 
 @Path("/main")
@@ -23,6 +24,9 @@ public class MainServiceResource {
 
 	@Autowired
 	CrawlerServiceFactory crawlerServiceFactory;
+	
+	@Autowired
+	AlertServiceImpl alertServiceImpl;
  
 	// TODO this method isn't being used.
 	@GET
@@ -52,7 +56,7 @@ public class MainServiceResource {
 		
 		AlertManager.start(alertDto.getArea(), alertDto.getQuery(), alertDto.getQueryId(), alertDto.getSubmissionTimeDate());
 		
-		// alertServiceImpl.addAlert(alertDto);
+		alertServiceImpl.addAlert(alertDto);
 		
 		return Response.status(200).build();
 	}

@@ -13,7 +13,7 @@ public class EmailService {
 	
 	public synchronized void sendEmail(String searchUrl , String customSearchQuery){
 		
-		  final String to = "christopher.j.urbanec@jpmorgan.com";
+		  final String to = "urbo143851@gmail.com";
 	      final String from = "urbo143851@gmail.com";
 	      final String host = "smtp.gmail.com";
 	      final String username = "";

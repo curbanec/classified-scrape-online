@@ -13,7 +13,7 @@ function login(){
 					200: function(){
 					    console.log("success login");
 					   /* alert("success login");*/
-					    document.cookie = 'username=John Doe; path=/';
+					    document.cookie = 'username=' + user +'; path=/';
 					    window.location.href = 'home.html';
 	      			},
 					500: function(){
