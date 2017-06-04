@@ -1,28 +1,24 @@
 function login(){
-    $('#login').submit(function(){
-        var user = "guy";
-        var pass = "";
-        
-        /*$('#user').val();
-        $('#pass').val();*/
+    
+        var user = $('#user').val();
+        var pass = $('#pass').val();
         
 		$.ajax({
 				type:'GET',
-				url:"/api/login/" + user + "-" + pass, 
+				url:"/api/login/" + user + "/" + pass, 
 				headers: { 'Content-Type': 'application/json' },
-				dataType:'json',  
-				/*mimeType:'json', */
+				dataType:'json',
 				contentType:'application/json',
 				statusCode: {
 					200: function(){
 					    console.log("success login");
-					    alert("success login");
-					    
+					   /* alert("success login");*/
+					    document.cookie = 'username=John Doe; path=/';
+					    window.location.href = 'home.html';
 	      			},
 					500: function(){
 					    alert("bad login info");
 					}
 				}
 			}); 
-    });
 }
