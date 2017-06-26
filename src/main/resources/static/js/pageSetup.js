@@ -1,7 +1,25 @@
-var stuffs;
+// var stuffs;
+
+$.ajax({
+	url:"/api/dashboardPopulate/applicationActivites?from=20170419&to=20170429", 
+	type:'GET',
+	success:function(data){
+		// stuffs=data;
+		setupGraph(data);
+	}
+}); 
+
+$.ajax({
+	url:"/api/dashboardPopulate/, 
+	type:'GET',
+	success:function(data){
+		// stuffs=data;
+		// setupGraph(data);
+	}
+}); 
 
 function setupGraph(data){
-	console.log(stuffs);
+	// console.log(stuffs);
 	var chart_plot_03_data=[];
 	var count = 0;
 	for (var j = 0; j< data.length; j++){
@@ -50,15 +68,6 @@ function setupGraph(data){
 		};
 	}
 
-$.ajax({
-	url:"/api/dashboardPopulate/applicationActivites?from=20170419&to=20170429", 
-	type:'GET',
-	success:function(data){
-		stuffs=data;
-		setupGraph(data);
-	}
-}); 
-
 // minimize/maximize dropdowns
 $(document).ready(function() {
     $('.collapse-link').on('click', function() {
@@ -103,4 +112,3 @@ $(function(){
 		}); 
 	});
 });
-

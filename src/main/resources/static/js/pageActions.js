@@ -11,7 +11,11 @@ $("#alertForm").on("click", addToSearchList);
 count = 0;
 
 function cancel(queryId){
-	
+
+	var button = $("#" + queryId);
+	button.html('Disabled');
+	button.removeClass("btn-success").addClass("btn-danger");
+
 	$.ajax({
 		url:'/api/main/cancel?queryId='+queryId, 
 		type:'GET',
@@ -49,8 +53,17 @@ function addToSearchList(){
 	
 	var json = {"submissionTimeDate":submissionTimeDate, "area":area, "query":query, "notifyAddress":notifyAddress, "queryId":queryId};
 	
-	$('#tableBody').append('<tr class="odd pointer"> <td class="a-center "> <input type="checkbox" class="flat" name="table_records"> </td>  <td class=" ">'+ area +'</td><td class=" ">'+ submissionTime +'</td><td class=" ">1</td><td class=" ">'+ query +'</td><td class=" ">'+ notifyAddress +'</td><td class="a-right a-right "><button type="button" onclick="cancel('+ queryId +')">'+ queryId +'</button></td></tr>');
-	    if ($("input.flat")[0]) {
+	$('#tableBody').append('<tr class="odd pointer"> <td class="a-center "> <input type="checkbox" class="flat" name="table_records"> </td>  <td class=" ">'+ area +'</td><td class=" ">'+ submissionTime +'</td><td class=" ">1</td><td class=" ">'+ query +'</td><td class=" ">'+ notifyAddress +'</td><td class="a-right a-right "><button id='+ queryId +' class="btn btn-success" type="button" onclick="cancel('+ queryId +')">'+ 'Active' +'</button></td></tr>');
+	    
+	
+	
+	
+	
+	
+	
+	
+	
+	if ($("input.flat")[0]) {
 	        $(document).ready(function () {
 	            $('input.flat').iCheck({
 	                checkboxClass: 'icheckbox_flat-green',

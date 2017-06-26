@@ -1,5 +1,7 @@
 package com.service;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
@@ -7,6 +9,7 @@ import javax.transaction.Transactional;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 import com.dao.AlertRepository;
 import com.domain.AlertRecord;
 import com.domain.UserRecord;
@@ -39,11 +42,11 @@ public class AlertServiceImpl {
 		entityManager.persist(alertRecord);
 	}
 	
-	/*public List<AlertRecord> retrieveAlerts(){
+	public List<AlertRecord> retrieveAlerts(){
 		
 		return alertRepository.retrieve();
 	}
-	
+	/*
 	public void modifyAlert(){
 		
 		alertRepository.modify();
