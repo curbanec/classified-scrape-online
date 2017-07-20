@@ -33,6 +33,13 @@ function disable(event) {
 	}
 }
 
+$(document).ready(function () {
+    $('input.flat').iCheck({
+        checkboxClass: 'icheckbox_flat-green',
+        radioClass: 'iradio_flat-green'
+    });
+});
+
 function addToSearchList(){
 	
 	var area = $('#area').val();
@@ -55,22 +62,13 @@ function addToSearchList(){
 	
 	$('#tableBody').append('<tr class="odd pointer"> <td class="a-center "> <input type="checkbox" class="flat" name="table_records"> </td>  <td class=" ">'+ area +'</td><td class=" ">'+ submissionTime +'</td><td class=" ">1</td><td class=" ">'+ query +'</td><td class=" ">'+ notifyAddress +'</td><td class="a-right a-right "><button id='+ queryId +' class="btn btn-success" type="button" onclick="cancel('+ queryId +')">'+ 'Active' +'</button></td></tr>');
 	    
+	var newTableRow = $('input.flat');
 	
+	newTableRow.iCheck({
+		checkboxClass: 'icheckbox_flat-green', 
+		radioClass: 'iradio_flat-green'
+		});
 	
-	
-	
-	
-	
-	
-	
-	if ($("input.flat")[0]) {
-	        $(document).ready(function () {
-	            $('input.flat').iCheck({
-	                checkboxClass: 'icheckbox_flat-green',
-	                radioClass: 'iradio_flat-green'
-	            });
-	        });
-	    }
 	    $('table input').on('ifChecked', function () {
 	        checkState = '';
 	        $(this).parent().parent().parent().addClass('selected');

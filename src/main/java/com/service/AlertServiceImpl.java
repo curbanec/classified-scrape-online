@@ -21,8 +21,8 @@ public class AlertServiceImpl {
 	@PersistenceContext
 	public EntityManager entityManager;
 
-	@Autowired
-	AlertRepository alertRepository;
+	/*@Autowired
+	AlertRepository alertRepository;*/
 	
 	@Transactional
 	public void addAlert(AlertDto alertDto){
@@ -42,10 +42,13 @@ public class AlertServiceImpl {
 		entityManager.persist(alertRecord);
 	}
 	
-	public List<AlertRecord> retrieveAlerts(){
+	/*public List<AlertRecord> retrieveAlerts(){
 		
 		return alertRepository.retrieve();
-	}
+	}*/
+	
+	
+	
 	/*
 	public void modifyAlert(){
 		

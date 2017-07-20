@@ -10,14 +10,9 @@ import com.domain.AlertRecord;
 @Repository
 public interface AlertRepository extends CrudRepository<AlertRecord, Long> {
 
-	public List<AlertRecord> retrieve(); 
+	/*public List<AlertRecord> retrieve(); */
 	
-	
-	
-	
-	
-	
-	
+
 	/*public void add();
 	
 	public List<AlertRecord> retrieve();

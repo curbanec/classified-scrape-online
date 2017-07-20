@@ -25,8 +25,8 @@ public class MainServiceResource {
 	@Autowired
 	CrawlerServiceFactory crawlerServiceFactory;
 	
-	@Autowired
-	AlertServiceImpl alertServiceImpl;
+	/*@Autowired
+	AlertServiceImpl alertServiceImpl;*/
  
 	// TODO this method isn't being used.
 	@GET
@@ -50,7 +50,7 @@ public class MainServiceResource {
 		return crawler.getStatus();
 	}
 	
-	@POST
+	/*@POST
 	@Path("/createAlert")
 	public Response createAlert(final AlertDto alertDto){
 		
@@ -59,7 +59,7 @@ public class MainServiceResource {
 		alertServiceImpl.addAlert(alertDto);
 		
 		return Response.status(200).build();
-	}
+	}*/
 	
 	@GET
 	@Path("/cancel")

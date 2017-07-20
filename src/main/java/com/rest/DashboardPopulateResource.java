@@ -20,9 +20,9 @@ public class DashboardPopulateResource {
 	@Autowired
 	PopulateAppActivityServiceImpl populateServiceImpl;
 	
-	@Autowired
+	/*@Autowired
 	AlertServiceImpl alertServiceImpl;
-
+*/
 	@GET
 	@Path("/applicationActivites")
 	public List<ClickRecord> populateDashboard(@QueryParam("from") String from, @QueryParam("to") String to) {
@@ -30,10 +30,10 @@ public class DashboardPopulateResource {
 		return populateServiceImpl.getRecordsByDate(from, to);
 	}
 	
-	@GET
+	/*@GET
 	@Path("/alerts")
 	public List<AlertRecord> populateAlertTable() {
 		
 		return alertServiceImpl.retrieveAlerts();
-	}
+	}*/
 }
