@@ -209,9 +209,9 @@ $MENU_TOGGLE.on('click', function() {
 	}).parent().addClass('active');
 
 	// recompute content when resizing
-	$(window).smartresize(function(){  
+	/*$(window).smartresize(function(){  
 		setContentHeight();
-	});
+	});*/
 
 	setContentHeight();
 

@@ -6,7 +6,6 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.js"></script>
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-
 	<script src="../vendors/jquery/dist/jquery.min.js"></script>
 	<!-- Bootstrap -->
     <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -46,6 +45,7 @@
     <!-- Switchery -->
     <script src="../vendors/switchery/dist/switchery.min.js"></script>
 	
+	<!-- CSS -->
 	<!-- Font Awesome -->
     <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -62,7 +62,7 @@
     <!-- bootstrap-daterangepicker -->
     <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
     <!-- Custom Theme Style -->
-    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <link href="../build/css/custom.css" rel="stylesheet">
     
     <script type="text/javascript">
 	// Replace the normal jQuery getScript function with one that supports
@@ -104,10 +104,10 @@
 
 <body ng-app="hello" ng-cloak class="ng-cloak nav-md">
 	<div ng-show="!authenticated" ng-controller="navigation as nav" class="">
-		<ul style="width:100px; margin:0 auto;" class="nav nav-pills" role="tablist">
+		<ul style="width:70px; margin:0 auto;" class="nav nav-pills" role="tablist">
 			<li><a href="#/login">login</a></li>
 		</ul>
-	</div>
+</div>
 
 	<div ng-view class="container"></div>
 
@@ -120,7 +120,3 @@
   
 </body>
 </html>
-
-
-
-
