@@ -11,9 +11,7 @@ angular.module('hello', [ 'ngRoute' ])
       controller : 'navigation',
       controllerAs: 'controller'
     }).otherwise('/login');
-
     $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
-
   })
   .controller('home', function($rootScope, $http, $location) {
     var self = this;   
@@ -24,7 +22,6 @@ angular.module('hello', [ 'ngRoute' ])
     $.getScript("../js/pageSetup.js", function(data, textStatus, jqxhr) {
 		console.log('Load was performed for pageSetup.js.');
 		});
-    
     self.logout = function() {
   	  $http.post('logout', {}).finally(function() {
   	    $rootScope.authenticated = false;
@@ -56,7 +53,6 @@ angular.module('hello', [ 'ngRoute' ])
 	  		          callback && callback();
 	  		        });
 	  		}
-	  
 	  	authenticate();
 	  	self.credentials = {};
 	  	
@@ -71,7 +67,6 @@ angular.module('hello', [ 'ngRoute' ])
 	          }
 	        });
 	    };  
-	    
 	    self.logout = function() {
 	    	  $http.post('logout', {}).finally(function() {
 	    	    $rootScope.authenticated = false;
