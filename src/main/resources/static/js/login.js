@@ -14,7 +14,9 @@ angular.module('hello', [ 'ngRoute' ])
     $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
   })
   .controller('home', function($rootScope, $http, $location) {
-    var self = this;   
+    var self = this;  
+    
+    self.meValue = "meeee"; // https://stackoverflow.com/questions/12008908/angularjs-how-can-i-pass-variables-between-controllers
   
     $.getScript("../js/pageActions.js", function(data, textStatus, jqxhr) {
 		console.log('Load was performed for pageActions.js.');
@@ -43,6 +45,8 @@ angular.module('hello', [ 'ngRoute' ])
 	  			
 	  		    $http.get('user', {headers : headers}).then(function(response) {
 	  		    	if (response.data.name) {
+	  		    		console.log(response.data.name);
+	  		    		self.displayName = response.data.name;
 	  		    		$rootScope.authenticated = true;
 	  		        } else {
 	  		            $rootScope.authenticated = false;

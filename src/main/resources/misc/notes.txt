@@ -238,5 +238,23 @@ $("#state").change(function(){
 	 console.log("drpdwn haz changed");
 	});
 
+css locations
+
+for login.html 
+static/build/css/custom.css
+
+move src and build folders
+
+
+
+
+
+
+
+
+
+
+
+
 
 
