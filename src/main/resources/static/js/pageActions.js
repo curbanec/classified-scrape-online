@@ -33,19 +33,18 @@ function disable(event) {
 	}
 }
 
-
-    function getCookie(c_name) {
-        if(document.cookie.length > 0) {
-            c_start = document.cookie.indexOf(c_name + "=");
-            if(c_start != -1) {
-                c_start = c_start + c_name.length + 1;
-                c_end = document.cookie.indexOf(";", c_start);
-                if(c_end == -1) c_end = document.cookie.length;
-                return unescape(document.cookie.substring(c_start,c_end));
-            }
+function getCookie(c_name) {
+    if(document.cookie.length > 0) {
+        c_start = document.cookie.indexOf(c_name + "=");
+        if(c_start != -1) {
+            c_start = c_start + c_name.length + 1;
+            c_end = document.cookie.indexOf(";", c_start);
+            if(c_end == -1) c_end = document.cookie.length;
+            return unescape(document.cookie.substring(c_start,c_end));
         }
-        return "";
     }
+    return "";
+}
 
 $(document).ready(function () {
     $('input.flat').iCheck({
@@ -134,10 +133,7 @@ function addToSearchList(){
 	            $('.bulk-actions').hide();
 	        }
 	    }  
-	    
-	    var x = getCookie("XSRF-TOKEN");
-	    
-	    
+	     
 	    $.ajax({
 	    	headers: { 'Content-Type': 'application/json', 'X-XSRF-TOKEN': getCookie("XSRF-TOKEN")},
 			url:"/api/main/createAlert", 
