@@ -25,10 +25,10 @@ public class MainServiceResource {
 	@Autowired
 	CrawlerServiceFactory crawlerServiceFactory;
 	
-	/*@Autowired
-	AlertServiceImpl alertServiceImpl;*/
+	@Autowired
+	AlertServiceImpl alertServiceImpl;
  
-	// TODO this method isn't being used.
+	/*// TODO this method isn't being used.
 	@GET
 	@Path("/initiateCrawler/{region}/{query}/{pages}")
 	public Response initiateCrawler(@PathParam("region") String region, @PathParam("query") String query, @PathParam("pages") String pages, @PathParam("maxDepth") boolean maxDepth) {
@@ -37,7 +37,7 @@ public class MainServiceResource {
 		crawler.execute(region, query, pages, maxDepth);
 
 		return crawler.getStatus();
-	}
+	}*/
 
 	@POST
 	@Path("/initiateStateCrawler")
@@ -50,7 +50,7 @@ public class MainServiceResource {
 		return crawler.getStatus();
 	}
 	
-	/*@POST
+	@POST
 	@Path("/createAlert")
 	public Response createAlert(final AlertDto alertDto){
 		
@@ -59,7 +59,7 @@ public class MainServiceResource {
 		alertServiceImpl.addAlert(alertDto);
 		
 		return Response.status(200).build();
-	}*/
+	}
 	
 	@GET
 	@Path("/cancel")
