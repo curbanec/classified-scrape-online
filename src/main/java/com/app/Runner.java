@@ -39,12 +39,12 @@ public class Runner implements CommandLineRunner {
 	 *If the "/user" resource is reachable then it will return the currently authenticated user (an Authentication), 
 	 *and otherwise Spring Security will intercept the request and send a 401 response through an AuthenticationEntryPoint 
 	 */
-	 @RequestMapping("/user")
+	/* @RequestMapping("/user")
 	  public Principal user(Principal user) {
 	    return user;
-	  }
+	  }*/
 	 
-	  @Configuration
+	/*  @Configuration
 	  @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
 	  protected static class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	    @Override
@@ -61,7 +61,7 @@ public class Runner implements CommandLineRunner {
 	                .and()
 	                .withUser("user2").password("secret2").roles("USER");
 	    } 
-	  }  
+	  } */ 
 	  
 	  public ConcurrentHashMap<String, String> getAlertsDatabase(){
 			return AlertsDatabase;
