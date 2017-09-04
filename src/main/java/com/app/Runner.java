@@ -8,14 +8,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.web.bind.annotation.RestController;
 
 @ComponentScan(basePackages={"com.app", "com.crawler", "com.rest", "com.domain", "com.dao", "com.email", "com.service"})
 @EnableJpaRepositories("com.dao")
 @EntityScan(basePackages = "com.domain")
 @EnableAutoConfiguration
 @SpringBootApplication
-@RestController
 public class Runner implements CommandLineRunner {
 	
 	public static ConcurrentHashMap<String, String> AlertsDatabase = new ConcurrentHashMap<String, String>();
