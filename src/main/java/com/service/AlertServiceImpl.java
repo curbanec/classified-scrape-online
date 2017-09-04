@@ -1,16 +1,11 @@
 package com.service;
 
-import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
-
 import org.hibernate.Session;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import com.dao.AlertRepository;
 import com.domain.AlertRecord;
 import com.domain.UserRecord;
 import com.dto.AlertDto;
