@@ -7,5 +7,5 @@ import com.domain.UserRecord;
 @Repository
 public interface UserRepository extends CrudRepository<UserRecord, Long> {
 	
-	public UserRecord findByUsername(String username);
+	public UserRecord findByUsernameAndPassword(String username, String password);
 }
