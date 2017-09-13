@@ -10,26 +10,54 @@ $("#alertForm").on("click", addToSearchList);
 
 count = 0;
 
-function cancel(queryId){
-
+function cancel(queryId){ // called from onClick
+	count++;
+	
 	var button = $("#" + queryId);
-	button.html('Disabled');
-	button.removeClass("btn-success").addClass("btn-danger");
+	
+	if (count % 2 != 0) {
+		//$('#pages').attr("disabled", true);
+		//$('#pages').val("0");
+		
+		button.html('Disabled');
+		button.removeClass("btn-success").addClass("btn-danger");
 
-	$.ajax({
-		url:'/api/main/cancel?queryId='+queryId, 
-		type:'GET',
-	});
+		$.ajax({
+			url:'/api/main/cancel?queryId='+queryId, // query id is usually not going to be in static db, need to figure out how to deal wiht this
+			type:'GET',
+		});
+	
+	} else {
+		//$('#pages').attr("disabled", false);
+		//$('#pages').val("");
+		
+		button.html('Active');
+		button.removeClass("btn-danger").addClass("btn-success");	
+		console.log("code stuff here");
+	}
 }
 
 function disable(event) {
 	count++;
+	
+	
+	
 	if (count % 2 != 0) {
 		$('#pages').attr("disabled", true);
 		$('#pages').val("0");
+		
+		
+		
+		
+		
 	} else {
 		$('#pages').attr("disabled", false);
 		$('#pages').val("");
+		
+		
+		
+		
+		
 	}
 }
 

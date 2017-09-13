@@ -1,5 +1,6 @@
 package com.rest;
 
+import java.util.ArrayList;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.concurrent.AlertManager;
 import com.crawler.Crawler;
 import com.crawler.CrawlerServiceFactory;
+import com.domain.AlertRecord;
 import com.dto.AlertDto;
 import com.dto.CRequestDto;
 import com.service.AlertServiceImpl;
@@ -60,17 +62,39 @@ public class MainServiceResource {
 		return Response.status(200).build();
 	}
 	
+	@POST
+	@Path("/restartAlert")
+	public Response restartAlert(final AlertDto alertDto) {
+		
+		AlertManager.start(alertDto.getArea(), alertDto.getQuery(), alertDto.getQueryId(), alertDto.getSubmissionTimeDate());
+		
+		return Response.status(200).build();
+	}
+	
+	@GET
+	@Path("/retrieveAlertsForUser")
+	public ArrayList<AlertRecord> retrieveAlerts() {
+		
+		ArrayList<AlertRecord> alerts = alertServiceImpl.retrieveAlerts();
+		
+		for (AlertRecord record : alerts) {
+			if (record.getIsActiveIndicator() && !AlertManager.isRunning(record.getQueryId())) {
+				
+				AlertManager.start(record.getArea(), record.getQueryName(), record.getQueryId(), record.getSubmissionTimeDate());
+			}
+		}
+		
+		return alerts;
+	}
+	
 	@GET
 	@Path("/cancel")
 	public Response cancelAlert(@QueryParam("queryId") String queryId){
 			
-		AlertManager.stop(queryId);
+		if (null != queryId && AlertManager.isRunning(queryId)) {
+			AlertManager.stop(queryId);
+		}
 		
 		return Response.status(200).build();	
-	}
-	
-	
-	
-	
-	
+	}	
 }

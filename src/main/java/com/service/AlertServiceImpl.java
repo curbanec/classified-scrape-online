@@ -1,11 +1,15 @@
 package com.service;
 
-
+import java.util.ArrayList;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
-import org.hibernate.Session;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
+import com.dao.AlertRepository;
+import com.dao.UserRepository;
 import com.domain.AlertRecord;
 import com.domain.UserRecord;
 import com.dto.AlertDto;
@@ -16,8 +20,11 @@ public class AlertServiceImpl {
 	@PersistenceContext
 	public EntityManager entityManager;
 
-	/*@Autowired
-	AlertRepository alertRepository;*/
+	@Autowired
+	AlertRepository alertRepository;
+	
+	@Autowired
+	UserRepository userRepository;
 	
 	@Transactional
 	public void addAlert(AlertDto alertDto){
@@ -27,22 +34,45 @@ public class AlertServiceImpl {
 		The only statements allowed in JPA are SELECT, UPDATE and DELETE.
 		SO #3085716*/
 			
-		Session session = entityManager.unwrap(Session.class);
+		/*Session session = entityManager.unwrap(Session.class);
 		
-		UserRecord userRecord = (UserRecord) session.load(UserRecord.class, 1);
-
-		AlertRecord alertRecord = new AlertRecord(userRecord, alertDto.getArea(), alertDto.getSubmissionTimeDate(), 
-				alertDto.getQuery(), alertDto.getQueryId(), alertDto.getNotifyAddress());
+		UserRecord userRecord = (UserRecord) session.load(UserRecord.class, 1);*/
+	    
+		AlertRecord alertRecord = new AlertRecord(findUser(), alertDto.getArea(), alertDto.getSubmissionTimeDate(), 
+				alertDto.getQuery(), alertDto.getQueryId(), alertDto.getNotifyAddress(), true);
 	
 		entityManager.persist(alertRecord);
 	}
 	
-	/*public List<AlertRecord> retrieveAlerts(){
+	public ArrayList<AlertRecord> retrieveAlerts(){
+	
+		return alertRepository.findByUserRecord(findUser());
+	}
+	
+	private UserRecord findUser() {
 		
-		return alertRepository.retrieve();
-	}*/
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	    String name = auth.getName();
+	    
+	    UserRecord userRecord = userRepository.findByUsername(name);
+		
+	    return userRecord;
+	}
 	
-	
+	@Transactional
+	public void updateAlert(Boolean isActiveIndicator, String queryId) {
+		
+		
+		
+		
+		
+		
+		alertRepository.updateAlertStatus(isActiveIndicator, queryId);	
+	}
+
+	public void setAlertRepository(AlertRepository alertRepository) {
+		this.alertRepository = alertRepository;
+	}
 	
 	/*
 	public void modifyAlert(){

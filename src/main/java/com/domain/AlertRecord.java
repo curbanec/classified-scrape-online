@@ -15,13 +15,14 @@ import javax.validation.constraints.NotNull;
 public class AlertRecord {
 	
 	public AlertRecord(UserRecord userRecord, String area, String submissionTimeDate, 
-			String queryName, String queryId, String notifyAddress){
+			String queryName, String queryId, String notifyAddress, Boolean isActiveIndicator){
 		this.userRecord=userRecord;
 		this.area=area;
 		this.submissionTimeDate=submissionTimeDate;
 		this.queryName=queryName;
 		this.queryId=queryId;
 		this.notifyAddress=notifyAddress;
+		this.isActiveIndicator=isActiveIndicator;
 	}
 	
 	public AlertRecord(){}
@@ -54,7 +55,11 @@ public class AlertRecord {
 	@NotNull
 	@Column(name = "NOTIFY_ADDRESS")
 	public String notifyAddress;
-
+	
+	@NotNull
+	@Column(name = "ACTIVE")
+	public Boolean isActiveIndicator;
+	
 	public int getId() {
 		return id;
 	}
@@ -110,4 +115,12 @@ public class AlertRecord {
 	public void setNotifyAddress(String notifyAddress) {
 		this.notifyAddress = notifyAddress;
 	}
+
+	public Boolean getIsActiveIndicator() {
+		return isActiveIndicator;
+	}
+
+	public void setIsActiveIndicator(Boolean isActiveIndicator) {
+		this.isActiveIndicator = isActiveIndicator;
+	}	
 }
