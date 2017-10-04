@@ -20,13 +20,23 @@ function getCookie(c_name) {
 
 function fillTable(data){
 	
-		console.log("hi");
+		console.log("fillTable");
 		
 		for( var i = 0; i < data.length; i++ ){
 			
 			// console.log(data[i]);
+			
+			if(data[i].isActiveIndicator){
+
+				$('#tableBody').append('<tr class="odd pointer"> <td class="a-center "> <input type="checkbox" class="flat" name="table_records"> </td>  <td class=" ">'+ data[i].area +'</td><td class=" ">'+ data[i].submissionTimeDate +'</td><td class=" ">1</td><td class=" ">'+ data[i].queryName +'</td><td class=" ">'+ data[i].notifyAddress +'</td><td class="a-right a-right "><button id='+ data[i].queryId +' class="btn btn-success" type="button" onclick="cancelOrEnable('+ data[i].queryId + ',' + data[i].isActiveIndicator + ')">'+ 'Active' +'</button></td></tr>');
+
+			} else{
+
+				$('#tableBody').append('<tr class="odd pointer"> <td class="a-center "> <input type="checkbox" class="flat" name="table_records"> </td>  <td class=" ">'+ data[i].area +'</td><td class=" ">'+ data[i].submissionTimeDate +'</td><td class=" ">1</td><td class=" ">'+ data[i].queryName +'</td><td class=" ">'+ data[i].notifyAddress +'</td><td class="a-right a-right "><button id='+ data[i].queryId +' class="btn btn-danger" type="button" onclick="cancelOrEnable('+ data[i].queryId + ',' + data[i].isActiveIndicator + ')">'+ 'Disabled' +'</button></td></tr>');
+
+			}
 		
-			$('#tableBody').append('<tr class="odd pointer"> <td class="a-center "> <input type="checkbox" class="flat" name="table_records"> </td>  <td class=" ">'+ data[i].area +'</td><td class=" ">'+ data[i].submissionTimeDate +'</td><td class=" ">1</td><td class=" ">'+ data[i].queryName +'</td><td class=" ">'+ data[i].notifyAddress +'</td><td class="a-right a-right "><button id='+ data[i].queryId +' class="btn btn-success" type="button" onclick="cancel('+ data[i].queryId +')">'+ 'Active' +'</button></td></tr>');
+			// $('#tableBody').append('<tr class="odd pointer"> <td class="a-center "> <input type="checkbox" class="flat" name="table_records"> </td>  <td class=" ">'+ data[i].area +'</td><td class=" ">'+ data[i].submissionTimeDate +'</td><td class=" ">1</td><td class=" ">'+ data[i].queryName +'</td><td class=" ">'+ data[i].notifyAddress +'</td><td class="a-right a-right "><button id='+ data[i].queryId +' class="btn btn-success" type="button" onclick="cancel('+ data[i].queryId +')">'+ 'Active' +'</button></td></tr>');
 			
 			var newTableRow = $('input.flat');
 			
