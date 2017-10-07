@@ -1,10 +1,4 @@
 
-function setupAlertTable(data){
-	
-	$('#tableBody').append('<tr class="odd pointer"> <td class="a-center "> <input type="checkbox" class="flat" name="table_records"> </td>  <td class=" ">'+ area +'</td><td class=" ">'+ submissionTime +'</td><td class=" ">1</td><td class=" ">'+ query +'</td><td class=" ">'+ notifyAddress +'</td><td class="a-right a-right "><button id='+ queryId +' class="btn btn-success" type="button" onclick="cancel('+ queryId +')">'+ 'Active' +'</button></td></tr>');
-    
-}
-
 function getCookie(c_name) {
     if(document.cookie.length > 0) {
         c_start = document.cookie.indexOf(c_name + "=");
@@ -19,25 +13,19 @@ function getCookie(c_name) {
 }
 
 function fillTable(data){
-	
-		console.log("fillTable");
 		
-		for( var i = 0; i < data.length; i++ ){
-			
-			// console.log(data[i]);
+		for(var i=0;i<data.length;i++){
 			
 			if(data[i].isActiveIndicator){
 
-				$('#tableBody').append('<tr class="odd pointer"> <td class="a-center "> <input type="checkbox" class="flat" name="table_records"> </td>  <td class=" ">'+ data[i].area +'</td><td class=" ">'+ data[i].submissionTimeDate +'</td><td class=" ">1</td><td class=" ">'+ data[i].queryName +'</td><td class=" ">'+ data[i].notifyAddress +'</td><td class="a-right a-right "><button id='+ data[i].queryId +' class="btn btn-success" type="button" onclick="cancelOrEnable('+ data[i].queryId + ',' + data[i].isActiveIndicator + ')">'+ 'Active' +'</button></td></tr>');
+				$('#tableBody').append('<tr class="odd pointer"> <td class="a-center "> <input type="checkbox" class="flat" name="table_records"> </td>  <td class=" ">'+ data[i].area +'</td><td class=" ">'+ data[i].submissionTimeDate +'</td><td class=" ">1</td><td class=" ">'+ data[i].queryName +'</td><td class=" ">'+ data[i].notifyAddress +'</td><td class="a-right a-right "><button id='+ data[i].queryId +' class="btn btn-success" type="button" onclick="cancelOrEnable('+ data[i].queryId + ',' + data[i].isActiveIndicator + ',' + data[i].area + ',' + data[i].queryName + ',' + data[i].notifyAddress + ')">'+ 'Active' +'</button></td></tr>');
 
-			} else{
+			} else {
 
-				$('#tableBody').append('<tr class="odd pointer"> <td class="a-center "> <input type="checkbox" class="flat" name="table_records"> </td>  <td class=" ">'+ data[i].area +'</td><td class=" ">'+ data[i].submissionTimeDate +'</td><td class=" ">1</td><td class=" ">'+ data[i].queryName +'</td><td class=" ">'+ data[i].notifyAddress +'</td><td class="a-right a-right "><button id='+ data[i].queryId +' class="btn btn-danger" type="button" onclick="cancelOrEnable('+ data[i].queryId + ',' + data[i].isActiveIndicator + ')">'+ 'Disabled' +'</button></td></tr>');
-
+				$('#tableBody').append('<tr class="odd pointer"> <td class="a-center "> <input type="checkbox" class="flat" name="table_records"> </td>  <td class=" ">'+ data[i].area +'</td><td id='+ data[i].queryId + 'date' + ' class=" ">'+ data[i].submissionTimeDate +'</td><td class=" ">1</td><td class=" ">'+ data[i].queryName +'</td><td class=" ">'+ data[i].notifyAddress +'</td><td class="a-right a-right "><button id='+ data[i].queryId +' class="btn btn-danger" type="button" onclick="cancelOrEnable('+ data[i].queryId + ',' + data[i].isActiveIndicator + ',\'' + data[i].area + '\',\'' + data[i].queryName + '\',\'' + data[i].notifyAddress + '\')">'+ 'Disabled' +'</button></td></tr>');
+				
 			}
 		
-			// $('#tableBody').append('<tr class="odd pointer"> <td class="a-center "> <input type="checkbox" class="flat" name="table_records"> </td>  <td class=" ">'+ data[i].area +'</td><td class=" ">'+ data[i].submissionTimeDate +'</td><td class=" ">1</td><td class=" ">'+ data[i].queryName +'</td><td class=" ">'+ data[i].notifyAddress +'</td><td class="a-right a-right "><button id='+ data[i].queryId +' class="btn btn-success" type="button" onclick="cancel('+ data[i].queryId +')">'+ 'Active' +'</button></td></tr>');
-			
 			var newTableRow = $('input.flat');
 			
 			newTableRow.iCheck({
@@ -263,17 +251,9 @@ $MENU_TOGGLE.on('click', function() {
 };
 // /Sidebar
 
-
-
-
 $(document).ready(function() {
-	
-
-	init_sidebar();
-	
-			
+	init_sidebar();			
 });	
-
 
 (function($,sr){
     // debouncing function from John Hann

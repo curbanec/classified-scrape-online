@@ -55,6 +55,8 @@ public class AlertServiceImpl {
 	    String name = auth.getName();
 	    
 	    UserRecord userRecord = userRepository.findByUsername(name);
+	    
+	    userRecord.setPassword(""); // don't include user password when returning user to front end. 
 		
 	    return userRecord;
 	}

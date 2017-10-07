@@ -1,3 +1,4 @@
+
 $.getScript("/js/regionsForStates.js", function(data, textStatus, jqxhr) {
 	console.log('Load was performed for state dropdown.');
 	});
@@ -5,62 +6,41 @@ $.getScript("/js/dateFormat.js", function(data, textStatus, jqxhr) {
 	console.log('Load was performed for dateFormat.');
 	});
 
-$("#maxDepth").on("click", disable);
 $("#alertForm").on("click", addToSearchList);
 
-
-function cancelOrEnable(queryId, isActive){ // called from onClick // cancelOrEnable
+function cancelOrEnable(queryId, isActiveIndicator, area, queryName, notifyAddress){
 	
 	var button = $("#" + queryId);
+	var date = $("#" + queryId + "date");
 	
-	if (isActive) {
-		//$('#pages').attr("disabled", true);
-		//$('#pages').val("0");
+	if (isActiveIndicator) {
 		
 		button.html('Disabled');
 		button.removeClass("btn-success").addClass("btn-danger");
-		// button.onClick(queryId, false);
 		button.attr("onClick", 'cancelOrEnable(' + queryId + ',' + false +')');
 
 		$.ajax({
-			url:'/api/main/cancel?queryId='+queryId, // query id is usually not going to be in static db, need to figure out how to deal wiht this
+			url:'/api/main/cancel?queryId='+ queryId, // query id is usually not going to be in static database
 			type:'GET',
 		});
 	
-	
 	} else {
-		//$('#pages').attr("disabled", false);
-		//$('#pages').val("");
-		
 		button.html('Active');
 		button.removeClass("btn-danger").addClass("btn-success");
-		// button.onClick(queryId, false);
 		button.attr("onClick", 'cancelOrEnable(' + queryId + ',' + true +')');
+		submissionTimeDate = dateFormat(new Date(), "yyyy-mm-d HH:MM");
+		date.html(submissionTimeDate);
 		
-	}
-}
-
-function disable(event) {
-	count++;
-	
-	// onclick, if html css is red logic.....
-	
-	if (count % 2 != 0) {
-		$('#pages').attr("disabled", true);
-		$('#pages').val("0");
+		var json = {"submissionTimeDate":submissionTimeDate, "area":area, "query":queryName, "notifyAddress":notifyAddress, "queryId":queryId};
 		
-		
-		
-		
-		
-	} else {
-		$('#pages').attr("disabled", false);
-		$('#pages').val("");
-		
-		
-		
-		
-		
+	    $.ajax({
+	    	headers: { 'Content-Type': 'application/json', 'X-XSRF-TOKEN': getCookie("XSRF-TOKEN")},
+			url:"/api/main/restartAlert", 
+			type:'POST',
+			dataType:'json', 
+			contentType:'application/json',
+			data:JSON.stringify(json)
+		});
 	}
 }
 
