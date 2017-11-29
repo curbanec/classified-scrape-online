@@ -68,6 +68,8 @@ public class MainServiceResource {
 		
 		AlertManager.start(alertDto.getArea(), alertDto.getQuery(), alertDto.getQueryId(), alertDto.getSubmissionTimeDate());
 		
+		alertServiceImpl.updateAlert(true, alertDto.getQuery());
+		
 		return Response.status(200).build();
 	}
 	
@@ -94,6 +96,8 @@ public class MainServiceResource {
 		if (null != queryId && AlertManager.isRunning(queryId)) {
 			AlertManager.stop(queryId);
 		}
+		
+		alertServiceImpl.updateAlert(false, queryId);
 		
 		return Response.status(200).build();	
 	}	

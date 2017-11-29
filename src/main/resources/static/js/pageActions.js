@@ -12,6 +12,19 @@ function cancelOrEnable(queryId, isActiveIndicator, area, queryName, notifyAddre
 	
 	var button = $("#" + queryId);
 	var date = $("#" + queryId + "date");
+	// area
+	//var area = $()
+	// notifyaddress
+	
+	// query
+	// https://stackoverflow.com/questions/14460421/get-the-contents-of-a-table-row-with-a-button-click
+	var tableRow = button.closest('tr');
+	var area = tableRow.find('#area').text();
+	
+	// add id's to all table rows to then find the elementss
+	
+	
+	
 	
 	if (isActiveIndicator) {
 		
@@ -41,6 +54,11 @@ function cancelOrEnable(queryId, isActiveIndicator, area, queryName, notifyAddre
 			contentType:'application/json',
 			data:JSON.stringify(json)
 		});
+	    
+	    
+	    
+	    
+	    
 	}
 }
 

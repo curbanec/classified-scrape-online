@@ -63,12 +63,7 @@ public class AlertServiceImpl {
 	
 	@Transactional
 	public void updateAlert(Boolean isActiveIndicator, String queryId) {
-		
-		
-		
-		
-		
-		
+	
 		alertRepository.updateAlertStatus(isActiveIndicator, queryId);	
 	}
 
