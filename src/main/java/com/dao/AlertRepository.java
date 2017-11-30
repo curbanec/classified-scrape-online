@@ -1,7 +1,6 @@
 package com.dao;
 
 import java.util.ArrayList;
-
 import javax.transaction.Transactional;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -18,11 +17,30 @@ public interface AlertRepository extends CrudRepository<AlertRecord, Long> {
 
 	/*Spring-data-jpa supports update operation.
 	You have to define the method in Repository interface.and annotated it with @Query and @Modifying*/
-
-	@Transactional
-	@Modifying
-	@Query("UPDATE AlertRecord a SET a.isActiveIndicator = :isActiveIndicator WHERE a.queryId = :queryId")
-	public void updateAlertStatus(@Param("isActiveIndicator") Boolean isActiveIndicator, @Param("queryId") String queryId);
+	
+	
+	@Modifying(clearAutomatically = true)
+	@Query("UPDATE AlertRecord a SET a.isActiveIndicator =:isActiveIndicator WHERE a.queryId =:queryId")
+	@Transactional 
+	public void updateAlertStatus(@Param("isActiveIndicator") boolean isActiveIndicator, @Param("queryId") String queryId);
+	
+	@Modifying(clearAutomatically = true)
+	@Query("UPDATE AlertRecord a SET a.isActiveIndicator =false WHERE a.queryId =:queryId")
+	@Transactional 
+	public void updateAlertStatusClosed(@Param("queryId") String queryId);
+	
+	@Modifying(clearAutomatically = true)
+	@Query("UPDATE AlertRecord a SET a.isActiveIndicator =true WHERE a.queryId =:queryId")
+	@Transactional 
+	public void updateAlertStatusOpen(@Param("queryId") String queryId);
+	
+	
+	// 916468
+	//@Transactional 
+	//@Modifying(clearAutomatically = true)
+	//@Query("UPDATE AlertRecord a SET a.queryName =:queryName WHERE a.queryId =:queryId")
+	//public void updateName(@Param("queryName") String isActiveIndicator, @Param("queryId") String queryId);
+	
 	
 	/*public void add();
 	

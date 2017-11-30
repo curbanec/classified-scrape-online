@@ -97,7 +97,7 @@ public class MainServiceResource {
 			AlertManager.stop(queryId);
 		}
 		
-		alertServiceImpl.updateAlert(false, queryId);
+		/*alertServiceImpl.updateAlert(false, queryId);*/
 		
 		return Response.status(200).build();	
 	}	
