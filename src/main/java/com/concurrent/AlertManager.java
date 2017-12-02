@@ -29,6 +29,8 @@ public class AlertManager {
 	    
 	    futures.put(key, scheduler.scheduleAtFixedRate(new Alert(region, query, queryId, submissionTimeDate), 
 	    		10, 10, java.util.concurrent.TimeUnit.SECONDS));
+	    // TODO updateAlertStatus is redundantly called on load of all alerts, and does not update when service method is used via MainServiceResource
+	    alertRepository.updateAlertStatus(true, queryId);
 	}
 	
 	public static void stop(final String queryId) {
@@ -47,7 +49,8 @@ public class AlertManager {
 
 /*
  * I have a story about the below code.... 
- * 
+ * Why did I Autowire a repo?!
+ * because...
  * 
  * 
  * 

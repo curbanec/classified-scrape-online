@@ -61,19 +61,13 @@ public class AlertServiceImpl {
 	    return userRecord;
 	}
 	
-	public void updateAlert(Boolean isActiveIndicator, String queryId) {
+	/*public void updateAlert(Boolean isActiveIndicator, String queryId) {
 	
-		// alertRepository.updateAlertStatus(isActiveIndicator, queryId);	
-		
+		alertRepository.updateAlertStatus(isActiveIndicator, queryId);	
 		if (isActiveIndicator) alertRepository.updateAlertStatusOpen(queryId);
-		// else alertRepository.updateAlertStatusClosed(queryId);
-		
-		
-		// alertRepository.updateName("dudesearch1", "916468");	
-		
-		
-		
-	}
+		else alertRepository.updateAlertStatusClosed(queryId);
+		alertRepository.updateName("dudesearch1", "916468");	
+	}*/
 
 	public void setAlertRepository(AlertRepository alertRepository) {
 		this.alertRepository = alertRepository;

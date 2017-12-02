@@ -24,7 +24,7 @@ public interface AlertRepository extends CrudRepository<AlertRecord, Long> {
 	@Transactional 
 	public void updateAlertStatus(@Param("isActiveIndicator") boolean isActiveIndicator, @Param("queryId") String queryId);
 	
-	@Modifying(clearAutomatically = true)
+	/*@Modifying(clearAutomatically = true)
 	@Query("UPDATE AlertRecord a SET a.isActiveIndicator =false WHERE a.queryId =:queryId")
 	@Transactional 
 	public void updateAlertStatusClosed(@Param("queryId") String queryId);
@@ -32,7 +32,7 @@ public interface AlertRepository extends CrudRepository<AlertRecord, Long> {
 	@Modifying(clearAutomatically = true)
 	@Query("UPDATE AlertRecord a SET a.isActiveIndicator =true WHERE a.queryId =:queryId")
 	@Transactional 
-	public void updateAlertStatusOpen(@Param("queryId") String queryId);
+	public void updateAlertStatusOpen(@Param("queryId") String queryId);*/
 	
 	
 	// 916468

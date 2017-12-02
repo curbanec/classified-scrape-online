@@ -94,7 +94,7 @@ function addToSearchList(){
 	
 	var json = {"submissionTimeDate":submissionTimeDate, "area":area, "query":query, "notifyAddress":notifyAddress, "queryId":queryId};
 	
-	$('#tableBody').append('<tr class="odd pointer"> <td class="a-center "> <input type="checkbox" class="flat" name="table_records"> </td>  <td class=" ">'+ area +'</td><td class=" ">'+ submissionTime +'</td><td class=" ">1</td><td class=" ">'+ query +'</td><td class=" ">'+ notifyAddress +'</td><td class="a-right a-right "><button id='+ queryId +' class="btn btn-success" type="button" onclick="cancel('+ queryId +')">'+ 'Active' +'</button></td></tr>');
+	$('#tableBody').append('<tr class="odd pointer"> <td class="a-center "> <input type="checkbox" class="flat" name="table_records"> </td>  <td class=" " id="area">'+ area +'</td><td class=" ">'+ submissionTime +'</td><td class=" ">1</td><td class=" " id="queryName">'+ query +'</td><td class=" " id="notifyAddress">'+ notifyAddress +'</td><td class="a-right a-right "><button id='+ queryId +' class="btn btn-success" type="button" onclick="cancelOrEnable('+ queryId +', true )">'+ 'Active' +'</button></td></tr>');
 	    
 	var newTableRow = $('input.flat');
 	

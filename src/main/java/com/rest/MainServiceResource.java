@@ -62,17 +62,6 @@ public class MainServiceResource {
 		return Response.status(200).build();
 	}
 	
-	@POST
-	@Path("/restartAlert")
-	public Response restartAlert(final AlertDto alertDto) {
-		
-		AlertManager.start(alertDto.getArea(), alertDto.getQuery(), alertDto.getQueryId(), alertDto.getSubmissionTimeDate());
-		
-		alertServiceImpl.updateAlert(true, alertDto.getQuery());
-		
-		return Response.status(200).build();
-	}
-	
 	@GET
 	@Path("/retrieveAlertsForUser")
 	public ArrayList<AlertRecord> retrieveAlerts() {
@@ -89,6 +78,17 @@ public class MainServiceResource {
 		return alerts;
 	}
 	
+	@POST
+	@Path("/restartAlert")
+	public Response restartAlert(final AlertDto alertDto) {
+		
+		AlertManager.start(alertDto.getArea(), alertDto.getQuery(), alertDto.getQueryId(), alertDto.getSubmissionTimeDate());
+		
+		// alertServiceImpl.updateAlert(true, alertDto.getQuery());
+		
+		return Response.status(200).build();
+	}
+	
 	@GET
 	@Path("/cancel")
 	public Response cancelAlert(@QueryParam("queryId") String queryId){
@@ -97,7 +97,7 @@ public class MainServiceResource {
 			AlertManager.stop(queryId);
 		}
 		
-		/*alertServiceImpl.updateAlert(false, queryId);*/
+		//alertServiceImpl.updateAlert(false, queryId);
 		
 		return Response.status(200).build();	
 	}	
