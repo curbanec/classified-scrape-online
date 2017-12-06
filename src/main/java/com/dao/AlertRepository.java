@@ -24,6 +24,11 @@ public interface AlertRepository extends CrudRepository<AlertRecord, Long> {
 	@Transactional 
 	public void updateAlertStatus(@Param("isActiveIndicator") boolean isActiveIndicator, @Param("queryId") String queryId);
 	
+	@Modifying(clearAutomatically = true)
+	@Query("DELETE AlertRecord a WHERE a.queryId =:queryId")
+	@Transactional 
+	public void deleteAlert(@Param("queryId") String queryId);
+	
 	/*@Modifying(clearAutomatically = true)
 	@Query("UPDATE AlertRecord a SET a.isActiveIndicator =false WHERE a.queryId =:queryId")
 	@Transactional 

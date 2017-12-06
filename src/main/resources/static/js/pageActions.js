@@ -8,25 +8,25 @@ $.getScript("/js/dateFormat.js", function(data, textStatus, jqxhr) {
  
 $("#alertForm").on("click", addToSearchList);
 
-$("#deleteAlertsTableHeader").on("click", function(){
+$("#deleteAlertsTableHeader").on("click", function() {
 	console.log("delete Aletrs handler");
-	 
-	$('#alertsTable').find('input[type="checkbox"]:checked').each(function () {
-	      
-		var outerHtml = $(this).parent().parent().parent().find("button").attr('id');
 
-		console.log(outerHtml);
-		
-		/*$.ajax({
-			url:'/api/main/cancel?queryId='+ queryId, 
-			type:'GET',
-		});*/
-		
-		// then, delete row
-		
-	    });
-	}
-);
+	$('#alertsTable').find('input[type="checkbox"]:checked').each(function() {
+
+		var tableRow = $(this).parent().parent().parent();
+		var queryId = tableRow.find("button").attr('id');
+
+		if (typeof queryId !== 'undefined') {
+
+			$.ajax({
+				url : '/api/main/cancelAndDelete?queryId=' + queryId,
+				type : 'GET',
+			});
+			
+			tableRow.remove();
+		}
+	});
+});
 
 function cancelOrEnable(queryId, isActiveIndicator){
 	

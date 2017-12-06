@@ -39,6 +39,12 @@ public class AlertManager {
 		   System.out.println("Trying to stop: " + queryId);
 		}
 	
+	public static void stopAndDelete(final String queryId) {
+		if (AlertManager.isRunning(queryId)) futures.get(queryId).cancel(true);
+		   alertRepository.deleteAlert(queryId);
+		   System.out.println("Trying to stop and delete: " + queryId);
+		}
+	
 	public static boolean isRunning(String queryId){
 		if( null != futures.get(queryId)) {
 			return true;

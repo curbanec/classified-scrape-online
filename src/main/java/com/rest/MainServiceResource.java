@@ -101,4 +101,17 @@ public class MainServiceResource {
 		
 		return Response.status(200).build();	
 	}	
+	
+	@GET
+	@Path("/cancelAndDelete")
+	public Response cancelAndDeleteAlert(@QueryParam("queryId") String queryId){
+			
+		if (null != queryId) {
+			AlertManager.stopAndDelete(queryId);
+		}
+		
+		//alertServiceImpl.updateAlert(false, queryId);
+		
+		return Response.status(200).build();	
+	}
 }
