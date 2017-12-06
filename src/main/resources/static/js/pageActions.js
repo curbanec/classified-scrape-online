@@ -5,7 +5,7 @@ $.getScript("/js/regionsForStates.js", function(data, textStatus, jqxhr) {
 $.getScript("/js/dateFormat.js", function(data, textStatus, jqxhr) {
 	console.log('Load was performed for dateFormat.');
 	});
-
+ 
 $("#alertForm").on("click", addToSearchList);
 
 $("#deleteAlertsTableHeader").on("click", function(){
