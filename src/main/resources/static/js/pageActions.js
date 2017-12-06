@@ -8,6 +8,26 @@ $.getScript("/js/dateFormat.js", function(data, textStatus, jqxhr) {
 
 $("#alertForm").on("click", addToSearchList);
 
+$("#deleteAlertsTableHeader").on("click", function(){
+	console.log("delete Aletrs handler");
+	 
+	$('#alertsTable').find('input[type="checkbox"]:checked').each(function () {
+	      
+		var outerHtml = $(this).parent().parent().parent().find("button").attr('id');
+
+		console.log(outerHtml);
+		
+		/*$.ajax({
+			url:'/api/main/cancel?queryId='+ queryId, 
+			type:'GET',
+		});*/
+		
+		// then, delete row
+		
+	    });
+	}
+);
+
 function cancelOrEnable(queryId, isActiveIndicator){
 	
 	// https://stackoverflow.com/questions/14460421/get-the-contents-of-a-table-row-with-a-button-click
