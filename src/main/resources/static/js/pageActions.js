@@ -66,11 +66,6 @@ function cancelOrEnable(queryId, isActiveIndicator){
 			contentType:'application/json',
 			data:JSON.stringify(json)
 		});
-	    
-	    
-	    
-	    
-	    
 	}
 }
 

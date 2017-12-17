@@ -32,11 +32,30 @@ public class CustomAuthenticationProvider implements AuthenticationProvider{
 			Collection<? extends GrantedAuthority> authorities = Collections.singleton(new SimpleGrantedAuthority("ROLE_USER"));
 		    UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username, password, authorities);
 		    return authenticationToken;
-
+		    
 		}
-
+		
 		return null;
-
+		
+	}
+	
+	public Authentication authenticate(Authentication authentication, boolean newUserCreate) throws AuthenticationException {
+		
+		String username = authentication.getName();
+		String password = authentication.getCredentials().toString();
+		
+		UserRecord user = loginServiceImpl.loadUser(username, password);
+		
+		if(null != user) { 
+					
+			Collection<? extends GrantedAuthority> authorities = Collections.singleton(new SimpleGrantedAuthority("ROLE_USER"));
+		    UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username, password, authorities);
+		    return authenticationToken;
+		    
+		}
+		
+		return null;
+		
 	}
 	
 	@Override

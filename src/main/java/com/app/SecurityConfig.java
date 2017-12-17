@@ -1,5 +1,6 @@
 package com.app;
 
+import javax.ws.rs.HttpMethod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Configuration;
@@ -18,10 +19,27 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter{
 	@Autowired
     private CustomAuthenticationProvider authProvider;
 	
+	// definition of the "security policy"
 	@Override
     protected void configure(HttpSecurity http) throws Exception {
       http.httpBasic().and().authorizeRequests()
-          .antMatchers("/index.html", "/home.html", "/login.html", "/", "/vendors/**", "/images/**", "/build/**", "/js/**", "/src/**", "/css/**").permitAll().anyRequest().authenticated().and()
+          .antMatchers(
+        		  "/signup.html",
+        		  "/index.html",
+        		  "/home.html", 
+        		  "/login.html", 
+        		  "/", 
+        		  "/vendors/**", 
+        		  "/images/**", 
+        		  "/build/**", 
+        		  "/js/**", 
+        		  "/src/**", 
+        		  "/css/**")
+          .permitAll()
+          .antMatchers(HttpMethod.GET, "/api/main/userSignup").permitAll()
+          .anyRequest()
+          .authenticated()
+          .and()
           .csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
     }
 	

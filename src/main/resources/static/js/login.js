@@ -6,6 +6,10 @@ angular.module('hello', [ 'ngRoute' ])
       templateUrl : 'home.html',
       controller : 'home',
       controllerAs: 'controller'
+    }).when('/signup', {
+    	templateUrl : 'signup.html', 
+    	controller : 'signup', 
+    	controllerAs : 'controller',
     }).when('/login', {
       templateUrl : 'login.html',
       controller : 'navigation',
@@ -16,6 +20,44 @@ angular.module('hello', [ 'ngRoute' ])
 	  
 	  var serviceDisplayName;
 	
+  }).controller('signup', function($rootScope, $http, $location) {
+	  
+	  var self = this;
+	  
+	  // callback function
+	  self.registerNewUser = function() {
+	        signUp(self.credentials, function() {
+	          if ($rootScope.authenticated) {
+	            $location.path("/");
+	            self.error = false;
+	          } else {
+	            $location.path("/signup");
+	            self.error = true;
+	          }
+	        });
+	    }; 
+	  
+	// local helper function
+	// containing function
+	var signUp = function(credentials, callback) {
+		
+		//var headers = credentials ? {authorization : "Basic " + btoa(credentials.username + ":" + credentials.password)} : {};
+		var headers = {};
+			
+	    $http.get('/api/main/userSignup', {headers : headers}).then(function(response) {
+	    	if (response.data.name) {
+	    		console.log(response.data.name);
+	    		sharedProperties.serviceDisplayName = response.data.name;
+	    		$rootScope.authenticated = true;
+	        } else {
+	            $rootScope.authenticated = false;
+	          }
+		       callback && callback();
+		       }, function() {
+		         $rootScope.authenticated = false;
+		         callback && callback();
+		       });
+		}
   }).controller('home', function($rootScope, $http, $location, sharedProperties) {
     
 	var self = this;  
@@ -43,9 +85,7 @@ angular.module('hello', [ 'ngRoute' ])
 	  		// local helper function
 	  		var authenticate = function(credentials, callback) {
 	  			
-	  			var headers = credentials ? {authorization : "Basic "
-	  		        + btoa(credentials.username + ":" + credentials.password)
-	  		    	} : {};
+	  			var headers = credentials ? {authorization : "Basic " + btoa(credentials.username + ":" + credentials.password)} : {};
 	  			
 	  		    $http.get('user', {headers : headers}).then(function(response) {
 	  		    	if (response.data.name) {
