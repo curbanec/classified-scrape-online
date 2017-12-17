@@ -1,7 +1,6 @@
 package com.rest;
 
 import java.security.Principal;
-import javax.ws.rs.core.Response;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,14 +17,5 @@ public class LoginServiceResource {
 	 public Principal user(Principal user) {
 		 	System.out.println("user");	 
 		 return user;
-	 }
-	 
-	 /*@RequestMapping("/userSignup")
-	 public Response newUser(String ok) {
-		 
-		 System.out.println("userSignup");
-		 
-		 return Response.status(200).build();
-		 
-	 }*/	 
+	 }	 
 }

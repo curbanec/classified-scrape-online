@@ -4,6 +4,7 @@ import javax.ws.rs.ApplicationPath;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.context.annotation.Configuration;
 import com.rest.MainServiceResource;
+import com.rest.RegisterUserResource;
 
 @Configuration
 @ApplicationPath("/api")
@@ -16,5 +17,6 @@ public class JerseyConfig extends ResourceConfig{
 	private void registerEndpoints(){
 		System.out.println("registerEndpoints() called");
 		this.register(MainServiceResource.class);
+		this.register(RegisterUserResource.class);
 	}
 }

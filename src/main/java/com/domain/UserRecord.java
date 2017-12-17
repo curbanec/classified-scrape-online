@@ -12,6 +12,11 @@ import javax.validation.constraints.NotNull;
 @Table(name = "users")
 public class UserRecord {
 	
+	public UserRecord(String username, String password) {
+		this.username = username;
+		this.password = password;
+	}
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "USER_ID")

@@ -114,16 +114,4 @@ public class MainServiceResource {
 		
 		return Response.status(200).build();	
 	}
-	
-	@GET
-	@Path("/userSignup")
-	public Response c(String data){
-			
-		//alertServiceImpl.updateAlert(false, queryId);
-		
-		System.out.println("userSignup called");
-		
-		return Response.status(500).build();	
-	}
-	
 }

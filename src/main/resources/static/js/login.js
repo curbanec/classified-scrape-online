@@ -42,9 +42,11 @@ angular.module('hello', [ 'ngRoute' ])
 	var signUp = function(credentials, callback) {
 		
 		//var headers = credentials ? {authorization : "Basic " + btoa(credentials.username + ":" + credentials.password)} : {};
-		var headers = {};
-			
-	    $http.get('/api/main/userSignup', {headers : headers}).then(function(response) {
+		// var headers = {}; 
+		
+		// do not add the HTTP Request Header Authorization : Basic 
+		
+	    $http.post('/api/registration/userSignup', {"username":credentials.username, "password":credentials.password}).then(function(response) {
 	    	if (response.data.name) {
 	    		console.log(response.data.name);
 	    		sharedProperties.serviceDisplayName = response.data.name;
