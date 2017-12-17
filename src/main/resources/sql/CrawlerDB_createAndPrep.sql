@@ -1,3 +1,9 @@
+CREATE TABLE CrawlerDB.users(
+USER_ID INT PRIMARY KEY NOT NULL auto_increment,
+USER_NAME varchar(50) NOT NULL UNIQUE,
+USER_PASS varchar(50) NOT NULL
+);
+
 CREATE TABLE CrawlerDB.alerts(
 ID INT PRIMARY KEY NOT NULL auto_increment,
 USER_ID int NOT NULL,
@@ -8,12 +14,6 @@ QUERY_NAME varchar(50) NOT NULL,
 QUERY_ID varchar(50) NOT NULL,
 NOTIFY_ADDRESS varchar(50) NOT NULL, 
 ACTIVE BOOLEAN NOT NULL
-);
-
-CREATE TABLE CrawlerDB.users(
-USER_ID INT PRIMARY KEY NOT NULL auto_increment,
-USER_NAME varchar(50) NOT NULL,
-USER_PASS varchar(50) NOT NULL
 );
 -----------------------------------------------------------------------------------
 

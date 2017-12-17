@@ -2,19 +2,38 @@ package com.service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import org.springframework.stereotype.Component;import com.domain.UserRecord;
+import javax.transaction.Transactional;
+
+import org.springframework.stereotype.Component;
+import com.domain.UserRecord;
 import com.dto.NewUserDto;
 
 @Component
 public class RegisterUserServiceImpl {
-	
+
 	@PersistenceContext
 	public EntityManager entityManager;
-	
-	public void registerNewUser(NewUserDto newUserDto) {
-		
+
+	@Transactional
+	public boolean registerNewUser(NewUserDto newUserDto) {
+
+		boolean userSuccess;
+
 		UserRecord userRecord = new UserRecord(newUserDto.getUsername(), newUserDto.getPassword());
+
+		try {
+
+			entityManager.persist(userRecord);
+
+			userSuccess = true;
+
+		} catch (Exception e) {
+
+			userSuccess = false;
+
+		}
 		
-		entityManager.persist(userRecord);	
+		return userSuccess;
+
 	}
 }

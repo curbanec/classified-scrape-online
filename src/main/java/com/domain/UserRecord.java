@@ -17,6 +17,8 @@ public class UserRecord {
 		this.password = password;
 	}
 	
+	public UserRecord() {}
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "USER_ID")

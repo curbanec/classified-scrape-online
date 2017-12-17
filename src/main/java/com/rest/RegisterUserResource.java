@@ -23,8 +23,10 @@ public class RegisterUserResource {
 		
 		System.out.println("userSignup called");
 		
-		registerUserServiceImpl.registerNewUser(newUserDto);
+		boolean success = registerUserServiceImpl.registerNewUser(newUserDto);
 		
-		return Response.status(500).build();	
+		if (success) return Response.status(200).build();
+		else return Response.status(500).build();	
+
 	}
 }
