@@ -27,13 +27,6 @@ angular.module('hello', [ 'ngRoute' ])
 	  // callback function
 	  self.registerNewUser = function() {
 	        signUp(self.credentials, function() {
-	          if ($rootScope.authenticated) {
-	            $location.path("/");
-	            self.error = false;
-	          } else {
-	            $location.path("/signup");
-	            self.error = true;
-	          }
 	        });
 	    }; 
 	  
@@ -46,19 +39,20 @@ angular.module('hello', [ 'ngRoute' ])
 		
 		// do not add the HTTP Request Header Authorization : Basic 
 		
-	    $http.post('/api/registration/userSignup', {"username":credentials.username, "password":credentials.password}).then(function(response) {
-	    	if (response.data.name) {
-	    		console.log(response.data.name);
-	    		sharedProperties.serviceDisplayName = response.data.name;
-	    		$rootScope.authenticated = true;
-	        } else {
-	            $rootScope.authenticated = false;
-	          }
-		       callback && callback();
-		       }, function() {
-		         $rootScope.authenticated = false;
-		         callback && callback();
-		       });
+	    $http.post('/api/registration/userSignup', {"username":credentials.username, "password":credentials.password})
+	    	.success(function(data){
+	    		console.log("success");
+	    		self.registrationSuccess = true;
+	    		self.error = false;
+	    		})
+	    		.error(function(err){
+	    			console.log("error");
+	    			self.error = true;
+	    			self.registrationSuccess = false;
+	    		}, function() {
+	    			$rootScope.authenticated = false;
+	    			callback && callback();
+	    		});
 		}
   }).controller('home', function($rootScope, $http, $location, sharedProperties) {
     

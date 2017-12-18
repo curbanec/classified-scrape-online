@@ -20,12 +20,11 @@ public class RegisterUserResource {
 	@POST
 	@Path("/userSignup")
 	public Response registerNewUser(NewUserDto newUserDto){
-		
-		System.out.println("userSignup called");
-		
+				
 		boolean success = registerUserServiceImpl.registerNewUser(newUserDto);
 		
 		if (success) return Response.status(200).build();
+		
 		else return Response.status(500).build();	
 
 	}
