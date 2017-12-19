@@ -1,7 +1,6 @@
-// The name of the application is 'hello'.
-angular.module('hello', [ 'ngRoute' ])
+// The name of the application is 'web-lite'.
+angular.module('web-lite', [ 'ngRoute' ])
   .config(function($routeProvider, $httpProvider) {
-
     $routeProvider.when('/', {
       templateUrl : 'home.html',
       controller : 'home',
@@ -20,33 +19,36 @@ angular.module('hello', [ 'ngRoute' ])
 	  
 	  var serviceDisplayName;
 	
-  }).controller('signup', function($rootScope, $http, $location) {
+  }).controller('signup', function($rootScope, $http, $location,  $scope) {
 	  
 	  var self = this;
 	  
+	 /* $.getScript("../vendors/validator/validator.js", function(data, textStatus, jqxhr) {
+			console.log('Load was performed for validator.js');
+			});*/
+	  
+	  $.getScript("../js/pageSetup.js", function(data, textStatus, jqxhr) {
+			console.log('Load was performed for pageSetup.js.');
+			});
+	  
 	  // callback function
 	  self.registerNewUser = function() {
-	        signUp(self.credentials, function() {
+	        signUp(self.credentials, function() {  
 	        });
 	    }; 
-	  
 	// local helper function
-	// containing function
-	var signUp = function(credentials, callback) {
-		
-		//var headers = credentials ? {authorization : "Basic " + btoa(credentials.username + ":" + credentials.password)} : {};
-		// var headers = {}; 
-		
-		// do not add the HTTP Request Header Authorization : Basic 
+	// "containing" function of the callback
+
+	    var signUp = function(credentials, callback) {
+			
+		// do not add the HTTP Request Header Authorization : Basic + btoa(credentials.username + ":" + credentials.password)
 		
 	    $http.post('/api/registration/userSignup', {"username":credentials.username, "password":credentials.password})
 	    	.success(function(data){
-	    		console.log("success");
 	    		self.registrationSuccess = true;
 	    		self.error = false;
 	    		})
 	    		.error(function(err){
-	    			console.log("error");
 	    			self.error = true;
 	    			self.registrationSuccess = false;
 	    		}, function() {
@@ -69,7 +71,7 @@ angular.module('hello', [ 'ngRoute' ])
     self.logout = function() {
   	  $http.post('logout', {}).finally(function() {
   	    $rootScope.authenticated = false;
-  	    $location.path("/");
+  	    $location.path("/login");
   	  });
   	}
   }).controller('navigation',
@@ -111,10 +113,4 @@ angular.module('hello', [ 'ngRoute' ])
 	          }
 	        });
 	    };  
-	    self.logout = function() {
-	    	  $http.post('logout', {}).finally(function() {
-	    	    $rootScope.authenticated = false;
-	    	    $location.path("/");
-	    	  });
-	    	}
   });

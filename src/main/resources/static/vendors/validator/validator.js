@@ -5,7 +5,6 @@
 
     MIT-style license.
 */
-
 var validator = (function($){
     var message, tests, checkField, validate, mark, unmark, field, minmax, defaults,
         validateWords, lengthRange, lengthLimit, pattern, alertTxt, data,
