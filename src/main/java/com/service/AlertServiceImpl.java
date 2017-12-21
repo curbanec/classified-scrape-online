@@ -42,6 +42,7 @@ public class AlertServiceImpl {
 				alertDto.getQuery(), alertDto.getQueryId(), alertDto.getNotifyAddress(), true);
 	
 		entityManager.persist(alertRecord);
+		
 	}
 	
 	public ArrayList<AlertRecord> retrieveAlerts(){
@@ -56,7 +57,7 @@ public class AlertServiceImpl {
 	    
 	    UserRecord userRecord = userRepository.findByUsername(name);
 	    
-	    userRecord.setPassword(""); // don't include user password when returning user to front end. 
+	   // userRecord.setPassword(""); // don't include user password when returning user to front end. 
 		
 	    return userRecord;
 	}
