@@ -11,7 +11,7 @@ import com.service.RegisterUserServiceImpl;
 
 @Path("/registration")
 @Produces(value = "application/json")
-@Consumes(value = "application/json")
+@Consumes(value = {"application/x-www-form-urlencoded", "application/json"})
 public class RegisterUserResource {
 	
 	@Autowired

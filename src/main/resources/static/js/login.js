@@ -22,40 +22,39 @@ angular.module('web-lite', [ 'ngRoute' ])
   }).controller('signup', function($rootScope, $http, $location,  $scope) {
 	  
 	  var self = this;
+	   
+	  self.registerNewUser = function($event) {
+		  signUp(self.credentials, function() {  
+	        });
+	  }
 	  
-	 /* $.getScript("../vendors/validator/validator.js", function(data, textStatus, jqxhr) {
+	  var signUp = function(credentials, callback) {
+			
+			// do not add the HTTP Request Header Authorization : Basic + btoa(credentials.username + ":" + credentials.password)
+			
+		    $http.post('/api/registration/userSignup', {"username":credentials.username, "password":credentials.password})
+		    	.success(function(data){
+		    		self.registrationSuccess = true;
+		    		self.error = false;
+		    		})
+		    		.error(function(err){
+		    			self.error = true;
+		    			self.registrationSuccess = false;
+		    		}, function() {
+		    			$rootScope.authenticated = false;
+		    			callback && callback();
+		    		});
+			}
+	  
+	  
+	  /*$.getScript("../vendors/validator/validator.js", function(data, textStatus, jqxhr) {
 			console.log('Load was performed for validator.js');
-			});*/
+			});
 	  
 	  $.getScript("../js/pageSetup.js", function(data, textStatus, jqxhr) {
 			console.log('Load was performed for pageSetup.js.');
-			});
+			});*/
 	  
-	  // callback function
-	  self.registerNewUser = function() {
-	        signUp(self.credentials, function() {  
-	        });
-	    }; 
-	// local helper function
-	// "containing" function of the callback
-
-	    var signUp = function(credentials, callback) {
-			
-		// do not add the HTTP Request Header Authorization : Basic + btoa(credentials.username + ":" + credentials.password)
-		
-	    $http.post('/api/registration/userSignup', {"username":credentials.username, "password":credentials.password})
-	    	.success(function(data){
-	    		self.registrationSuccess = true;
-	    		self.error = false;
-	    		})
-	    		.error(function(err){
-	    			self.error = true;
-	    			self.registrationSuccess = false;
-	    		}, function() {
-	    			$rootScope.authenticated = false;
-	    			callback && callback();
-	    		});
-		}
   }).controller('home', function($rootScope, $http, $location, sharedProperties) {
     
 	var self = this;  
