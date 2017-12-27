@@ -16,8 +16,8 @@ public class EmailService {
 		  final String to = "urbo143851@gmail.com";
 	      final String from = "urbo143851@gmail.com";
 	      final String host = "smtp.gmail.com";
-	      final String username = "";
-	      final String password = "";
+	      final String username = "urbo143851";
+	      final String password = "Spring87@@";
 
 	      Properties props = new Properties();
 	      props.put("mail.smtp.auth", "true");
