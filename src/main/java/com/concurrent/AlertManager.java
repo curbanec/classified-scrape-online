@@ -23,11 +23,11 @@ public class AlertManager {
 	
 	private static ConcurrentMap<String,ScheduledFuture<?>> futures = new ConcurrentHashMap<String, ScheduledFuture<?>>();
 	
-	public static void start(final String region, final String query, final String queryId, final String submissionTimeDate) {
+	public static void start(final String region, final String query, final String queryId, final String submissionTimeDate, final String notifyAddress ) {
 
 	    String key = queryId;
 	    
-	    futures.put(key, scheduler.scheduleAtFixedRate(new Alert(region, query, queryId, submissionTimeDate), 
+	    futures.put(key, scheduler.scheduleAtFixedRate(new Alert(region, query, queryId, submissionTimeDate, notifyAddress), 
 	    		10, 10, java.util.concurrent.TimeUnit.SECONDS));
 	    // TODO updateAlertStatus is redundantly called on load of all alerts, and does not update when service method is used via MainServiceResource
 	    alertRepository.updateAlertStatus(true, queryId);

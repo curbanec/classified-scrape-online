@@ -55,7 +55,7 @@ public class MainServiceResource {
 	@Path("/createAlert")
 	public Response createAlert(final AlertDto alertDto){
 		
-		AlertManager.start(alertDto.getArea(), alertDto.getQuery(), alertDto.getQueryId(), alertDto.getSubmissionTimeDate());
+		AlertManager.start(alertDto.getArea(), alertDto.getQuery(), alertDto.getQueryId(), alertDto.getSubmissionTimeDate(), alertDto.getNotifyAddress());
 		
 		alertServiceImpl.addAlert(alertDto);
 		
@@ -71,7 +71,7 @@ public class MainServiceResource {
 		for (AlertRecord record : alerts) {
 			if (record.getIsActiveIndicator() && !AlertManager.isRunning(record.getQueryId())) {
 				
-				AlertManager.start(record.getArea(), record.getQueryName(), record.getQueryId(), record.getSubmissionTimeDate());
+				AlertManager.start(record.getArea(), record.getQueryName(), record.getQueryId(), record.getSubmissionTimeDate(), record.getNotifyAddress());
 			}
 		}
 		
@@ -82,7 +82,7 @@ public class MainServiceResource {
 	@Path("/restartAlert")
 	public Response restartAlert(final AlertDto alertDto) {
 		
-		AlertManager.start(alertDto.getArea(), alertDto.getQuery(), alertDto.getQueryId(), alertDto.getSubmissionTimeDate());
+		AlertManager.start(alertDto.getArea(), alertDto.getQuery(), alertDto.getQueryId(), alertDto.getSubmissionTimeDate(), alertDto.getNotifyAddress());
 		
 		// alertServiceImpl.updateAlert(true, alertDto.getQuery());
 		

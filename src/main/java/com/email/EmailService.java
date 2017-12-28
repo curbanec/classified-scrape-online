@@ -11,9 +11,9 @@ import javax.mail.internet.MimeMessage;
 
 public class EmailService {
 	
-	public synchronized void sendEmail(String searchUrl , String customSearchQuery){
+	public synchronized void sendEmail(String searchUrl , String customSearchQuery, String notifyAddress){
 		
-		  final String to = "urbo143851@gmail.com";
+		  final String to = notifyAddress;
 	      final String from = "urbo143851@gmail.com";
 	      final String host = "smtp.gmail.com";
 	      final String username = "urbo143851";

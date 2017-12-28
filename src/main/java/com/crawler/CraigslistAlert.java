@@ -17,7 +17,7 @@ import com.gargoylesoftware.htmlunit.html.HtmlPage;
 public class CraigslistAlert {
 	
 	@SuppressWarnings({ "unchecked", "resource" })
-	public void runPrimary(String region, String customSearchQuery, String queryId, String submissionTime)  {
+	public void runPrimary(String region, String customSearchQuery, String queryId, String submissionTime, String notifyAddress)  {
 		
 		DateFormat dateFormatter = new SimpleDateFormat ( "yyyy-MM-dd HH:mm" );
 		
@@ -62,7 +62,7 @@ public class CraigslistAlert {
 						 * https://stackoverflow.com/questions/19896870/why-is-my-spring-autowired-field-null
 						 * */
 						EmailService emailService = new EmailService();
-						emailService.sendEmail(searchUrl, customSearchQuery);
+						emailService.sendEmail(searchUrl, customSearchQuery, notifyAddress);
 						
 						System.out.println("Adding to Database");
 						System.out.println(description.asText());
