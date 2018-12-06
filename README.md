@@ -1,6 +1,5 @@
-# WebCrawlerLite
+# classified-scrape-online
 
-This branch is for working from Codenvy and deployment on Heroku. 
-I am using the gentelella Bootstrap Admin Dashboard as a template.
+Using the Gentelella Bootstrap Admin Dashboard as a front end template, users are able to create a user account and set email alerts for items they're interested in  on craigslist.
 
-https://github.com/puikinsh/gentelella
+
